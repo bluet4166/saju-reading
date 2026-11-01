@@ -1,5 +1,5 @@
 /* ============================================================
-   사주 대시보드 — 렌더링
+   사주 대시보드 — 렌더링 (멀티 인물)
    data.js 가 생성한 window.SAJU_DATA 를 읽어 화면을 그린다.
    외부 라이브러리 없음 (차트는 직접 SVG 로 생성)
    ============================================================ */
@@ -7,17 +7,22 @@
   'use strict'
 
   const D = window.SAJU_DATA
-  if (!D) return
+  if (!D || !D.people || !D.people.length) return
+
+  const PEOPLE = D.people
+  let current = 0
+  const P = () => PEOPLE[current]
 
   const DIMS = [
-    { key: 'love', label: '연애운', color: 'var(--love)', raw: '#f472b6' },
-    { key: 'career', label: '사업운', color: 'var(--career)', raw: '#fbbf24' },
-    { key: 'money', label: '금전운', color: 'var(--money)', raw: '#4ade80' },
-    { key: 'health', label: '건강운', color: 'var(--health)', raw: '#60a5fa' },
+    { key: 'love', label: '연애운', raw: '#f472b6' },
+    { key: 'career', label: '사업운', raw: '#fbbf24' },
+    { key: 'money', label: '금전운', raw: '#4ade80' },
+    { key: 'health', label: '건강운', raw: '#60a5fa' },
   ]
   const EL_KO = { wood: '목', fire: '화', earth: '토', metal: '금', water: '수' }
   const EL_HANJA = { wood: '木', fire: '火', earth: '土', metal: '金', water: '水' }
   const EL_VAR = { wood: 'var(--wood)', fire: 'var(--fire)', earth: 'var(--earth)', metal: 'var(--metal)', water: 'var(--water)' }
+  const STRENGTH_KO = { strong: '신강', weak: '신약', balanced: '중화' }
   const NS = 'http://www.w3.org/2000/svg'
 
   const $ = (sel, root = document) => root.querySelector(sel)
@@ -29,68 +34,112 @@
 
   const visible = { love: true, career: true, money: true, health: true }
 
+  /* --------------------------------------------------- 인물 전환 */
+
+  function renderPeopleSwitch() {
+    const host = $('#peopleSwitch')
+    host.innerHTML = PEOPLE.map(
+      (p, i) => `
+      <button type="button" role="tab" data-idx="${i}" aria-selected="${i === current}"
+              tabindex="${i === current ? 0 : -1}">
+        <span class="ps-relation">${p.relation}</span>
+        <span class="ps-label">${p.label}</span>
+        <span class="ps-sub">${p.subject.solar} ${p.subject.time}</span>
+      </button>`
+    ).join('')
+
+    const btns = [...host.querySelectorAll('button')]
+    const select = (idx) => {
+      current = idx
+      btns.forEach((b, i) => {
+        b.setAttribute('aria-selected', String(i === idx))
+        b.tabIndex = i === idx ? 0 : -1
+      })
+      renderAll()
+      btns[idx].focus()
+    }
+    btns.forEach((b, i) => {
+      b.addEventListener('click', () => select(i))
+      b.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); select((i + 1) % btns.length) }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); select((i - 1 + btns.length) % btns.length) }
+      })
+    })
+  }
+
   /* ------------------------------------------------------- 상단 정보 */
 
   function renderHero() {
-    const s = D.subject
+    const p = P()
+    const s = p.subject
+
+    document.title = `사주 대시보드 · ${s.solar} ${p.pillars[2].label}일주`
+
     const chips = [
       ['생년월일', `${s.lunar} → 양력 ${s.solar}`],
       ['시각', `${s.time} · ${s.timeLabel}`],
       ['성별', s.genderKo],
-      ['일주', `${D.pillars[2].label} (${D.pillars[2].hanja})`],
-      ['용신', `${D.yongsin.primaryKo} · ${D.yongsin.secondaryKo}`],
+      ['일주', `${p.pillars[2].label} (${p.pillars[2].hanja})`],
+      ['용신', `${p.yongsin.primaryKo} · ${p.yongsin.secondaryKo}`],
     ]
-    $('#subjectChips').innerHTML = chips
-      .map(([k, v]) => `<li><b>${k}</b> ${v}</li>`)
-      .join('')
+    $('#subjectChips').innerHTML = chips.map(([k, v]) => `<li><b>${k}</b> ${v}</li>`).join('')
 
-    const y2026 = D.yearly[0]
+    const y2026 = p.yearly[0]
     $('#heroScore').textContent = y2026.scores.overall
-    const peak = D.yearly.reduce((a, b) => (b.scores.overall > a.scores.overall ? b : a))
     $('#heroNote').textContent =
-      `올해는 ${y2026.label}년, ${D.currentDaeun.label} 대운 안에 있습니다. ` +
-      `앞으로 25년 중 가장 밝은 해는 ${peak.year}년(${peak.label}) ${peak.scores.overall}점입니다.`
+      `${s.solar} ${s.time}생 · 올해는 ${y2026.label}년, ${p.currentDaeun.label} 대운 안에 있습니다. ` +
+      `앞으로 25년 중 가장 밝은 해는 ${p.peakYear.year}년(${p.peakYear.label}) ${p.peakYear.score}점입니다.`
   }
 
   /* --------------------------------------------------------- 사주팔자 */
 
   function renderPillars() {
-    $('#pillars').innerHTML = D.pillars
-      .map((p, i) => `
+    const p = P()
+    $('#pillars').innerHTML = p.pillars
+      .map((pl, i) => {
+        if (pl.empty) {
+          return `<article class="pillar is-empty">
+            <span class="pillar-pos">${pl.pos}</span>
+            <span class="pillar-hanja" style="opacity:.3">–</span>
+            <p class="pillar-ko">시각 미상</p>
+            <div class="pillar-meta"><span>계산 제외</span></div>
+          </article>`
+        }
+        return `
         <article class="pillar${i === 2 ? ' is-day' : ''}">
-          <span class="pillar-pos">${p.pos}</span>
+          <span class="pillar-pos">${pl.pos}</span>
           <span class="pillar-hanja">
-            <span class="stem">${p.stemHanja}</span><span class="branch">${p.branchHanja}</span>
+            <span class="stem">${pl.stemHanja}</span><span class="branch">${pl.branchHanja}</span>
           </span>
-          <p class="pillar-ko">${p.label}</p>
+          <p class="pillar-ko">${pl.label}</p>
           <div class="pillar-meta">
-            <span style="color:${EL_VAR[p.stemEl]}">${EL_KO[p.stemEl]}</span>
-            <span style="color:${EL_VAR[p.branchEl]}">${EL_KO[p.branchEl]}</span>
-            <span>${p.animal}</span>
+            <span style="color:${EL_VAR[pl.stemEl]}">${EL_KO[pl.stemEl]}</span>
+            <span style="color:${EL_VAR[pl.branchEl]}">${EL_KO[pl.branchEl]}</span>
+            <span>${pl.animal}</span>
           </div>
-        </article>`)
+        </article>`
+      })
       .join('')
 
-    const dm = D.dayMaster
-    const strengthKo = { strong: '신강', weak: '신약', balanced: '중화' }[dm.strength] || dm.strength
+    const dm = p.dayMaster
     $('#dayMasterNote').textContent =
-      `일간은 ${dm.stem}(${dm.elementKo}) · ${dm.yinYang === 'yin' ? '음' : '양'}화 · ${strengthKo}`
+      `일간은 ${dm.stem}(${dm.elementKo}) · ${dm.yinYang === 'yin' ? '음' : '양'}${dm.elementKo} · ${STRENGTH_KO[dm.strength] || dm.strength}`
 
     $('#conversionNote').textContent =
-      `음력 ${D.subject.lunar} → 양력 ${D.subject.solar} 변환: ${D.meta.converter}. ` +
-      `${D.subject.time}은 ${D.subject.timeLabel}으로, 경도 보정 오차 범위에서도 시주가 유지됩니다.`
+      `음력 ${p.subject.lunar} → 양력 ${p.subject.solar} 변환: ${p.subject.conversion}. ${p.subject.timeNote}`
   }
 
   /* --------------------------------------------------------- 오행 분포 */
 
   function renderElements() {
+    const p = P()
     const order = ['wood', 'fire', 'earth', 'metal', 'water']
-    const max = Math.max(...Object.values(D.fiveElements), 1)
+    const max = Math.max(...Object.values(p.fiveElements), 1)
     $('#elements').innerHTML = order
       .map((el) => {
-        const n = D.fiveElements[el]
-        const weak = D.weakElements.includes(el)
-        const strong = D.dominantElements.includes(el)
+        const n = p.fiveElements[el]
+        const weak = p.weakElements.includes(el)
+        const strong = p.dominantElements.includes(el)
         return `
           <div class="el-row${weak ? ' is-weak' : ''}${strong ? ' is-strong' : ''}">
             <span class="el-name">${EL_KO[el]} ${EL_HANJA[el]}</span>
@@ -102,10 +151,10 @@
       })
       .join('')
 
-    const weak = D.weakElements.map((e) => EL_KO[e]).join('·')
-    const strong = D.dominantElements.map((e) => EL_KO[e]).join('·')
+    const weak = p.weakElements.map((e) => EL_KO[e]).join('·')
+    const strong = p.dominantElements.map((e) => EL_KO[e]).join('·')
     $('#yongsinNote').textContent =
-      `강한 기운 ${strong} · 부족한 기운 ${weak} → 조율점(용신) ${D.yongsin.primaryKo}, 보조 ${D.yongsin.secondaryKo}`
+      `강한 기운 ${strong} · 부족한 기운 ${weak} → 조율점(용신) ${p.yongsin.primaryKo}, 보조 ${p.yongsin.secondaryKo}`
   }
 
   /* ------------------------------------------------------- 공용 스케일 */
@@ -117,7 +166,7 @@
   }
 
   function yDomain() {
-    const all = D.yearly.flatMap((y) => Object.values(y.scores))
+    const all = P().yearly.flatMap((y) => Object.values(y.scores))
     const min = Math.min(...all)
     const max = Math.max(...all)
     return [Math.max(10, Math.floor((min - 8) / 10) * 10), Math.min(100, Math.ceil((max + 8) / 10) * 10)]
@@ -159,6 +208,7 @@
   }
 
   function renderBucketChart() {
+    const p = P()
     const svg = $('#bucketChart')
     svg.innerHTML = ''
     const W = 920, H = 400
@@ -167,12 +217,11 @@
     const innerH = H - pad.t - pad.b
     const [d0, d1] = yDomain()
     const y = makeScale([d0, d1], [pad.t + innerH, pad.t])
-    const n = D.buckets.length
+    const n = p.buckets.length
     const band = innerW / n
     const activeDims = DIMS.filter((d) => visible[d.key])
     const barW = Math.min(24, (band * 0.62) / Math.max(activeDims.length, 1))
 
-    // 그리드 + y축
     for (let v = d0; v <= d1; v += 10) {
       svg.appendChild(svgEl('line', { class: 'grid-line', x1: pad.l, x2: W - pad.r, y1: y(v), y2: y(v) }))
       const t = svgEl('text', { x: pad.l - 10, y: y(v) + 4, 'text-anchor': 'end' })
@@ -181,9 +230,9 @@
     }
     svg.appendChild(svgEl('line', { class: 'axis-line', x1: pad.l, x2: W - pad.r, y1: pad.t + innerH, y2: pad.t + innerH }))
 
-    const currentIdx = D.buckets.findIndex((b) => 2026 >= b.from && 2026 <= b.to)
+    const currentIdx = p.buckets.findIndex((b) => 2026 >= b.from && 2026 <= b.to)
 
-    D.buckets.forEach((b, i) => {
+    p.buckets.forEach((b, i) => {
       const cx = pad.l + band * i + band / 2
       if (i === currentIdx) {
         svg.appendChild(svgEl('rect', {
@@ -192,7 +241,6 @@
         }))
       }
 
-      // 대운 라벨
       const dl = svgEl('text', { class: 'daeun-label', x: cx, y: pad.t - 26, 'text-anchor': 'middle' })
       dl.textContent = `대운 ${b.daeun}`
       svg.appendChild(dl)
@@ -204,16 +252,12 @@
         const v = b.scores[d.key]
         const top = y(v)
         const h = Math.max(2, pad.t + innerH - top)
-        const rect = svgEl('rect', {
+        svg.appendChild(svgEl('rect', {
           class: 'bar', x: bx, y: top, width: barW, height: h, rx: 4,
           fill: d.raw, opacity: 0.72,
-        })
-        rect.dataset.bucket = i
-        svg.appendChild(rect)
+        }))
 
-        const hit = svgEl('rect', {
-          class: 'bar-hit', x: bx - 3, y: pad.t, width: barW + 6, height: innerH,
-        })
+        const hit = svgEl('rect', { class: 'bar-hit', x: bx - 3, y: pad.t, width: barW + 6, height: innerH })
         hit.addEventListener('mouseenter', () => showBucketTip(i, cx, y(b.scores.overall)))
         hit.addEventListener('mouseleave', hideTips)
         svg.appendChild(hit)
@@ -228,7 +272,6 @@
         bx += barW + 6
       })
 
-      // x축 라벨
       const xl = svgEl('text', { x: cx, y: pad.t + innerH + 24, 'text-anchor': 'middle', style: 'fill:var(--ink-dim)' })
       xl.textContent = b.label
       svg.appendChild(xl)
@@ -238,20 +281,19 @@
       svg.appendChild(sl)
     })
 
-    // 종합 라인
-    const pts = D.buckets.map((b, i) => [pad.l + band * i + band / 2, y(b.scores.overall)])
+    const pts = p.buckets.map((b, i) => [pad.l + band * i + band / 2, y(b.scores.overall)])
     svg.appendChild(svgEl('polyline', {
       class: 'series-line',
-      points: pts.map((p) => p.join(',')).join(' '),
+      points: pts.map((pt) => pt.join(',')).join(' '),
       stroke: 'var(--gold)', 'stroke-width': 2,
     }))
-    pts.forEach(([px, py], i) => {
+    pts.forEach(([px, py]) => {
       svg.appendChild(svgEl('circle', { class: 'series-dot', cx: px, cy: py, r: 4, fill: 'var(--gold)' }))
     })
   }
 
   function showBucketTip(i, x, yPos) {
-    const b = D.buckets[i]
+    const b = P().buckets[i]
     const host = $('#bucketChart').closest('.chart-shell')
     const rows = DIMS.map(
       (d) => `<div class="tt-row"><span>${d.label}</span><b style="color:${d.raw}">${b.scores[d.key]}</b></div>`
@@ -273,7 +315,8 @@
   /* --------------------------------------------------------- 표 */
 
   function renderBucketTable() {
-    $('#bucketTable').innerHTML = D.buckets
+    const p = P()
+    $('#bucketTable').innerHTML = p.buckets
       .map((b) => {
         const cur = 2026 >= b.from && 2026 <= b.to
         return `<tr class="${cur ? 'is-current' : ''}">
@@ -288,12 +331,13 @@
       })
       .join('')
 
-    $('#chartRange').textContent = `${D.buckets[0].from}–${D.buckets[D.buckets.length - 1].to}`
+    $('#chartRange').textContent = `${p.buckets[0].from}–${p.buckets[p.buckets.length - 1].to}`
   }
 
   /* --------------------------------------------------- 연도별 차트 */
 
   function renderYearChart() {
+    const p = P()
     const svg = $('#yearChart')
     svg.innerHTML = ''
     const W = 920, H = 360
@@ -302,23 +346,20 @@
     const innerH = H - pad.t - pad.b
     const [d0, d1] = yDomain()
     const y = makeScale([d0, d1], [pad.t + innerH, pad.t])
-    const years = D.yearly
+    const years = p.yearly
     const stepX = innerW / (years.length - 1)
     const x = (i) => pad.l + stepX * i
 
-    // 대운 배경
-    D.daeun.forEach((dn) => {
+    p.daeun.forEach((dn) => {
       const idxs = years.map((yr, i) => ({ yr, i })).filter((o) => o.yr.year >= dn.from && o.yr.year <= dn.to)
       if (!idxs.length) return
       const x0 = x(idxs[0].i) - stepX / 2
       const x1 = x(idxs[idxs.length - 1].i) + stepX / 2
-      svg.appendChild(svgEl('rect', {
-        class: 'daeun-band', x: Math.max(pad.l, x0), y: pad.t,
-        width: Math.min(W - pad.r, x1) - Math.max(pad.l, x0), height: innerH,
-      }))
+      const left = Math.max(pad.l, x0)
+      const right = Math.min(W - pad.r, x1)
+      svg.appendChild(svgEl('rect', { class: 'daeun-band', x: left, y: pad.t, width: right - left, height: innerH }))
       const t = svgEl('text', {
-        class: 'daeun-label', x: (Math.max(pad.l, x0) + Math.min(W - pad.r, x1)) / 2,
-        y: pad.t + 13, 'text-anchor': 'middle',
+        class: 'daeun-label', x: (left + right) / 2, y: pad.t + 13, 'text-anchor': 'middle',
       })
       t.textContent = `대운 ${dn.label} (${dn.from}–${dn.to})`
       svg.appendChild(t)
@@ -327,7 +368,6 @@
       }
     })
 
-    // 그리드
     for (let v = d0; v <= d1; v += 10) {
       svg.appendChild(svgEl('line', { class: 'grid-line', x1: pad.l, x2: W - pad.r, y1: y(v), y2: y(v) }))
       const t = svgEl('text', { x: pad.l - 10, y: y(v) + 4, 'text-anchor': 'end' })
@@ -336,7 +376,6 @@
     }
     svg.appendChild(svgEl('line', { class: 'axis-line', x1: pad.l, x2: W - pad.r, y1: pad.t + innerH, y2: pad.t + innerH }))
 
-    // x축 라벨 (5년 간격)
     years.forEach((yr, i) => {
       if (yr.year % 5 === 1 || i === 0) {
         const t = svgEl('text', { x: x(i), y: pad.t + innerH + 22, 'text-anchor': 'middle' })
@@ -345,7 +384,6 @@
       }
     })
 
-    // 금년 표시
     const todayIdx = years.findIndex((yy) => yy.year === 2026)
     if (todayIdx >= 0) {
       svg.appendChild(svgEl('line', {
@@ -356,12 +394,11 @@
       svg.appendChild(tl)
     }
 
-    // 계열 선
     DIMS.filter((d) => visible[d.key]).forEach((d) => {
       const pts = years.map((yy, i) => [x(i), y(yy.scores[d.key])])
       svg.appendChild(svgEl('polyline', {
         class: 'series-line',
-        points: pts.map((p) => p.join(',')).join(' '),
+        points: pts.map((pt) => pt.join(',')).join(' '),
         stroke: d.raw, opacity: 0.92,
       }))
       pts.forEach(([px, py]) => {
@@ -369,7 +406,6 @@
       })
     })
 
-    // 호버 영역
     years.forEach((yy, i) => {
       const hit = svgEl('rect', {
         x: x(i) - stepX / 2, y: pad.t, width: stepX, height: innerH,
@@ -392,8 +428,8 @@
       svg.appendChild(hit)
     })
 
-    const best = D.yearly.reduce((a, b) => (b.scores.overall > a.scores.overall ? b : a))
-    const worst = D.yearly.reduce((a, b) => (b.scores.overall < a.scores.overall ? b : a))
+    const best = years.reduce((a, b) => (b.scores.overall > a.scores.overall ? b : a))
+    const worst = years.reduce((a, b) => (b.scores.overall < a.scores.overall ? b : a))
     $('#yearHint').textContent =
       `가장 흐름이 좋은 해는 ${best.year}년(${best.label}) ${best.scores.overall}점, ` +
       `가장 지치는 해는 ${worst.year}년(${worst.label}) ${worst.scores.overall}점입니다. ` +
@@ -403,7 +439,8 @@
   /* ------------------------------------------------------- 세부 운세 */
 
   function renderTopics() {
-    const topics = ['love', 'career', 'money', 'health'].map((k) => D.topics[k])
+    const p = P()
+    const topics = ['love', 'career', 'money', 'health'].map((k) => p.topics[k])
 
     $('#tabs').innerHTML = topics
       .map(
@@ -433,18 +470,9 @@
           <p class="panel-summary">${t.summary}</p>
 
           <div class="panel-grid">
-            <div class="mini good">
-              <h4>강점</h4>
-              <ul>${t.strengths.map((s) => `<li>${s}</li>`).join('')}</ul>
-            </div>
-            <div class="mini warn">
-              <h4>주의</h4>
-              <ul>${t.cautions.map((s) => `<li>${s}</li>`).join('')}</ul>
-            </div>
-            <div class="mini tip">
-              <h4>실천</h4>
-              <ul>${t.advice.map((s) => `<li>${s}</li>`).join('')}</ul>
-            </div>
+            <div class="mini good"><h4>강점</h4><ul>${t.strengths.map((s) => `<li>${s}</li>`).join('')}</ul></div>
+            <div class="mini warn"><h4>주의</h4><ul>${t.cautions.map((s) => `<li>${s}</li>`).join('')}</ul></div>
+            <div class="mini tip"><h4>실천</h4><ul>${t.advice.map((s) => `<li>${s}</li>`).join('')}</ul></div>
           </div>
         </div>`
       )
@@ -473,20 +501,20 @@
   /* ------------------------------------------------------- 산출 방식 */
 
   function renderMethod() {
-    const mb = $('#methodBody')
-    const base = D.meta.scoreModel.elementBase
+    const p = P()
+    const base = p.scoreModel.elementBase
     const rows = ['wood', 'fire', 'earth', 'metal', 'water']
       .map((el) => `<tr>
         <td>${EL_KO[el]} (${EL_HANJA[el]})</td>
-        <td>${D.fiveElements[el]}개</td>
+        <td>${p.fiveElements[el]}개</td>
         <td><b style="color:${base[el].value >= 0 ? 'var(--el-ok)' : 'var(--el-no)'}">${base[el].value > 0 ? '+' : ''}${base[el].value}</b></td>
         <td>${base[el].reason}</td>
       </tr>`)
       .join('')
 
-    mb.innerHTML = `
-      <p><code>${D.meta.scoreModel.formula}</code></p>
-      <p>${D.meta.scoreModel.aggregation}. 대운 보정은 대운 간지가 용신·희신이면 +3, 구신이면 −2입니다.</p>
+    $('#methodBody').innerHTML = `
+      <p><code>${D.meta.formula}</code></p>
+      <p>${D.meta.aggregation}. 대운 보정은 대운 간지가 용신·희신이면 +3, 구신이면 −2입니다.</p>
       <table class="model-table">
         <thead><tr><th>오행</th><th>개수</th><th>기본값</th><th>근거</th></tr></thead>
         <tbody>${rows}</tbody>
@@ -501,15 +529,20 @@
 
   /* ------------------------------------------------------------ 실행 */
 
-  renderHero()
-  renderPillars()
-  renderElements()
+  function renderAll() {
+    renderHero()
+    renderPillars()
+    renderElements()
+    renderBucketChart()
+    renderBucketTable()
+    renderYearChart()
+    renderTopics()
+    renderMethod()
+  }
+
+  renderPeopleSwitch()
   renderLegend()
-  renderBucketChart()
-  renderBucketTable()
-  renderYearChart()
-  renderTopics()
-  renderMethod()
+  renderAll()
 
   let rt
   window.addEventListener('resize', () => {
