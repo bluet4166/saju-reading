@@ -35,14 +35,35 @@ const EL_KO = { wood: '목', fire: '화', earth: '토', metal: '금', water: '�
 // 일간 오행이 생하는 오행(식상) / 극하는 오행(재성)
 const GENERATES = { wood: 'fire', fire: 'earth', earth: 'metal', metal: 'water', water: 'wood' }
 const CONTROLS = { wood: 'earth', fire: 'metal', earth: 'water', metal: 'wood', water: 'fire' }
-// 일간을 극하는 오행(관성/구신 후보)
+// 일간을 극하는 오행(관성) / 일간을 생하는 오행(인성)
 const CONTROLLED_BY = Object.fromEntries(Object.entries(CONTROLS).map(([k, v]) => [v, k]))
+const GENERATED_BY = Object.fromEntries(Object.entries(GENERATES).map(([k, v]) => [v, k]))
 
-const DIM_WEIGHTS = {
-  love: { wood: 1.0, fire: 1.3, earth: 0.6, metal: 0.7, water: 0.9 },
-  career: { wood: 1.0, fire: 0.8, earth: 1.1, metal: 1.2, water: 0.9 },
-  money: { wood: 0.6, fire: 0.7, earth: 1.0, metal: 1.5, water: 0.8 },
-  health: { wood: 1.1, fire: 1.2, earth: 0.9, metal: 0.8, water: 1.3 },
+const DIM_KEYS = ['love', 'career', 'job', 'money', 'study', 'health']
+
+/**
+ * 주제별 가중치는 "오행 이름"이 아니라 "십성 역할"에 붙는다.
+ * 사람마다 용신 오행이 달라도 같은 해석 틀을 쓰기 위해서다.
+ *   peer 비겁 / output 식상 / wealth 재성 / officer 관성 / resource 인성
+ */
+const ROLE_WEIGHTS = {
+  love: { peer: 1.0, output: 1.4, wealth: 1.8, officer: 1.5, resource: 0.9 },
+  career: { peer: 0.9, output: 1.8, wealth: 1.3, officer: 1.5, resource: 1.0 },
+  job: { peer: 0.8, output: 0.7, wealth: 1.1, officer: 2.2, resource: 1.0 },
+  money: { peer: 0.6, output: 1.2, wealth: 2.2, officer: 0.7, resource: 0.5 },
+  study: { peer: 1.0, output: 0.8, wealth: 0.6, officer: 0.9, resource: 2.2 },
+  health: { peer: 1.5, output: 1.0, wealth: 0.8, officer: 1.2, resource: 1.4 },
+}
+
+/** 오행 → 십성 역할 */
+function roleMap(dayEl) {
+  return {
+    [dayEl]: 'peer',
+    [GENERATES[dayEl]]: 'output',
+    [CONTROLS[dayEl]]: 'wealth',
+    [CONTROLLED_BY[dayEl]]: 'officer',
+    [GENERATED_BY[dayEl]]: 'resource',
+  }
 }
 
 const START_YEAR = 2026
@@ -137,6 +158,24 @@ const TOPICS = {
       cautions: ['갈증을 늦게 느껴 수분이 부족해지기 쉽습니다', '열을 내는 일에 몰입하면 회복을 뒤로 미룹니다', '수면 시간이 흔들리면 회복이 급격히 느려집니다'],
       advice: ['아침 햇빛 15분 — 화 기운과 생체리듬을 동시에', '물은 목마르기 전에 마시기 (하루 1.5L 이상)', '주 3회, 숨이 차는 유산소 20분 이상', '갱년기 관련 증상은 사주가 아니라 전문의 상담으로'],
     },
+    job: {
+      title: '취업운', hanja: '職', accent: '#a78bfa',
+      headline: '재취업·이직은 "정리해서 넘기는 능력"으로 승부',
+      summary:
+        '관성(수)이 약한 사주라 조직의 규칙에 몸을 맞추는 데 에너지가 듭니다. 대신 인성(목)이 두 자리로 강해 기획·문서·교육·자문에서 신뢰를 얻습니다. 새 기술보다 "이미 쌓은 것을 구조화해 전달하는 역할"에서 문이 열립니다.',
+      strengths: ['경험을 문서와 체계로 정리하는 힘', '사람을 가르치고 이끄는 신뢰', '끝까지 마무리하는 책임감'],
+      cautions: ['연봉·조건 협상에서 스스로를 낮게 부릅니다', '새 환경의 암묵적 규칙에 적응하는 데 시간이 걸립니다', '인맥 관리가 소홀해지면 기회가 끊깁니다'],
+      advice: ['경력기술서를 "역할-성과-수치"로 다시 쓰세요', '자문·강의·프로젝트 단위 계약을 먼저 시도하세요', '분기마다 지인 3명에게 근황을 전하세요'],
+    },
+    study: {
+      title: '학업운', hanja: '學', accent: '#22d3ee',
+      headline: '배움 자체가 운을 여는 구조',
+      summary:
+        '인성(목)이 용신이자 두 자리에 있어 학습이 곧 운의 연료입니다. 다만 화(집중·발산)가 얕아 오래 앉아 있는 공부보다 짧게 반복하는 방식이 맞습니다.',
+      strengths: ['구조를 파악해 자기 언어로 바꾸는 이해력', '한 번 이해하면 오래 가는 기억'],
+      cautions: ['완벽하게 이해할 때까지 시작을 미룹니다', '이론에 머물고 실습을 건너뜁니다'],
+      advice: ['하루 25분 단위로 나눠 반복하세요', '배운 것을 한 장 요약으로 남기세요', '자격증·강의 중 하나를 골라 끝까지 마무리하세요'],
+    },
   },
   p1975: {
     love: {
@@ -175,6 +214,24 @@ const TOPICS = {
       cautions: ['긴장이 근육과 소화로 먼저 나타납니다', '순환이 약해 손발이 차거나 잠이 얕습니다', '바쁘면 회복을 뒷전으로 미룹니다'],
       advice: ['아침 햇빛 15분', '주 3회 유산소 + 스트레칭으로 목의 긴장 풀기', '수면 시간을 고정하세요', '증상이 있으면 전문의 상담이 우선입니다'],
     },
+    job: {
+      title: '취업운', hanja: '職', accent: '#a78bfa',
+      headline: '조직 안에서 "없으면 안 되는 자리"를 만드는 쪽',
+      summary:
+        '관성(금)이 용신이라 조직·직장의 틀이 오히려 이 사람을 다듬어 줍니다. 다만 하나뿐이라 경쟁이 치열한 자리보다 전문성이 인정받는 자리가 맞습니다. 비겁이 강해 주도권 다툼이 생기기 쉬우니 관계선 관리가 관건입니다.',
+      strengths: ['한 분야를 깊이 파는 전문성', '맡은 일을 조용히 완수하는 힘'],
+      cautions: ['성과를 말하지 않아 평가에서 밀립니다', '상사와의 긴장이 관계를 각 세웁니다', '남의 일까지 떠안습니다'],
+      advice: ['월 1회 성과를 숫자로 정리해 보고하세요', '업무 범위를 문서로 확인하세요', '전문 자격·경력 인증을 하나 더 확보하세요'],
+    },
+    study: {
+      title: '학업운', hanja: '學', accent: '#22d3ee',
+      headline: '혼자 파고드는 공부에 강한 구조',
+      summary:
+        '인성(수)이 얇아 강의를 듣는 방식보다 스스로 파고들어 정리하는 쪽이 효율적입니다. 화(발산)가 없어 발표·구술처럼 순간 집중이 필요한 자리에는 대비가 필요합니다.',
+      strengths: ['혼자 깊이 파고드는 집중력', '자기만의 방식으로 정리하는 힘'],
+      cautions: ['발표·구술처럼 말로 꺼내는 평가에 약합니다', '진도 관리가 늦어지기 쉽습니다'],
+      advice: ['배운 것을 소리 내어 설명하는 연습을 하세요', '주간 진도표를 눈에 보이는 곳에 두세요', '물을 곁에 두고 학습 리듬을 유지하세요'],
+    },
   },
   p2005: {
     love: {
@@ -212,6 +269,24 @@ const TOPICS = {
       strengths: ['체력의 기본 바탕이 단단한 편', '규칙을 만들면 오래 유지하는 힘'],
       cautions: ['물을 거의 마시지 않습니다', '야식·탄수화물 위주 식사가 소화를 힘들게 합니다', '수면 시간이 불규칙합니다'],
       advice: ['하루 1.5L 이상 물 마시기', '야식을 줄이고 식사 시간을 고정하세요', '주 3회 유산소로 땀 흘리기', '증상이 있으면 전문의 상담이 우선입니다'],
+    },
+    job: {
+      title: '취업운', hanja: '職', accent: '#a78bfa',
+      headline: '스펙보다 "손에 잡히는 결과물"이 여는 문',
+      summary:
+        '관성(목)이 용신이자 하나뿐이라 조직 생활의 틀이 이 사람을 단단하게 만듭니다. 식상(금)이 두 개로 실무·기술 습득이 빠르고, 편관이 있어 책임을 맡으면 오히려 성장합니다. 20대 취업은 자격·포트폴리오 같은 증거물이 결정적입니다.',
+      strengths: ['기술을 빨리 익히는 손', '맡은 일을 끝까지 해내는 책임감', '현장에서 통하는 실무 감각'],
+      cautions: ['완벽을 기다리다 지원 시기를 놓칩니다', '눈앞의 일에 몰입해 방향 점검이 늦습니다', '첫 직장의 조건만 보고 판단합니다'],
+      advice: ['"완성" 전에 지원하고 피드백을 받으세요', '포트폴리오를 3개 프로젝트로 압축하세요', '선배 3명에게 실제 업무를 물어보세요'],
+    },
+    study: {
+      title: '학업운', hanja: '學', accent: '#22d3ee',
+      headline: '이해는 빠른데 꾸준함이 관건',
+      summary:
+        '인성(화)이 두 개로 이해력과 흡수력이 좋습니다. 다만 토가 세 개로 과해 한 번 지치면 회복이 느리고, 수가 없어 밤샘 뒤 컨디션 회복이 더딥니다. 실력은 "짧게 자주"에서 나옵니다.',
+      strengths: ['개념을 빠르게 흡수하는 이해력', '배운 것을 응용하는 감각'],
+      cautions: ['벼락치기 후 긴 공백이 생깁니다', '밤샘이 다음 주 전체를 망칩니다', '목표가 흐려지면 금방 흥미를 잃습니다'],
+      advice: ['하루 2시간 고정 루틴을 먼저 만드세요', '시험 2주 전 계획표를 눈에 붙이세요', '물 1.5L와 수면 7시간을 성적의 일부로 보세요'],
     },
   },
 }
@@ -273,17 +348,19 @@ function buildPerson(cfg) {
   const daeunOf = (year) => daeun.find((d) => year >= d.from && year <= d.to) || daeun[daeun.length - 1]
 
   /* 연도별 점수 */
+  const ROLES = roleMap(dayEl)
   function scoreYear(year) {
     const gz = yearGanzhi(year)
     const d = daeunOf(year)
     const scores = {}
-    for (const [dim, w] of Object.entries(DIM_WEIGHTS)) {
+    for (const dim of DIM_KEYS) {
+      const w = ROLE_WEIGHTS[dim]
       const raw =
-        elementBase[gz.stemEl].value * w[gz.stemEl] +
-        elementBase[gz.branchEl].value * 0.8 * w[gz.branchEl]
+        elementBase[gz.stemEl].value * w[ROLES[gz.stemEl]] +
+        elementBase[gz.branchEl].value * 0.8 * w[ROLES[gz.branchEl]]
       scores[dim] = Math.round(clamp(50 + raw * 1.6 + d.delta, 15, 97))
     }
-    scores.overall = Math.round((scores.love + scores.career + scores.money + scores.health) / 4)
+    scores.overall = Math.round(DIM_KEYS.reduce((s, k) => s + scores[k], 0) / DIM_KEYS.length)
     return { ...gz, daeun: d.label, scores }
   }
 
@@ -294,16 +371,15 @@ function buildPerson(cfg) {
     const slice = yearly.slice(i, i + 5)
     const avg = (k) => Math.round(slice.reduce((s, y) => s + y.scores[k], 0) / slice.length)
     const best = slice.reduce((a, b) => (b.scores.overall > a.scores.overall ? b : a))
+    const bucketScores = { overall: avg('overall') }
+    for (const k of DIM_KEYS) bucketScores[k] = avg(k)
     buckets.push({
       label: `${slice[0].year}–${slice[slice.length - 1].year}`,
       from: slice[0].year,
       to: slice[slice.length - 1].year,
       daeun: daeunOf(slice[0].year).label,
       daeunHanja: daeunOf(slice[0].year).hanja,
-      scores: {
-        love: avg('love'), career: avg('career'), money: avg('money'),
-        health: avg('health'), overall: avg('overall'),
-      },
+      scores: bucketScores,
       bestYear: best.year,
       bestScore: best.scores.overall,
       years: slice.map((y) => ({ year: y.year, label: y.label, scores: y.scores })),
@@ -326,7 +402,7 @@ function buildPerson(cfg) {
   /* 주제 콘텐츠에 현재 점수 주입 */
   const t = TOPICS[cfg.id]
   const topics = {}
-  for (const key of ['love', 'career', 'money', 'health']) {
+  for (const key of DIM_KEYS) {
     topics[key] = { ...t[key], key, score: yearly[0].scores[key] }
   }
 
@@ -368,8 +444,9 @@ const data = {
     disclaimer:
       '이 페이지는 전통 해석에 기반한 참고 자료입니다. 의료·투자·법률 판단을 대신하지 않으며, 점수는 길흉의 확정이 아니라 상대적 흐름을 보여 주는 지표입니다.',
     formula: '연도점수 = 50 + (천간값×w + 지지값×0.8×w)×1.6 + 대운보정',
-    aggregation: '5년 구간 점수 = 해당 구간 연도 점수의 평균',
-    weights: DIM_WEIGHTS,
+    aggregation: '5년 구간 점수 = 해당 구간 연도 점수의 평균 · 종합 = 6개 주제의 평균',
+    weights: ROLE_WEIGHTS,
+    roleLabels: { peer: '비겁', output: '식상', wealth: '재성', officer: '관성', resource: '인성' },
   },
   people,
 }
@@ -391,6 +468,9 @@ for (const p of people) {
   console.log('  대운:', p.daeun.slice(0, 4).map((d) => `${d.from}-${d.to} ${d.label}`).join(' | '))
   for (const b of p.buckets) {
     const s = b.scores
-    console.log(`    ${b.label} 대운 ${b.daeun} 종합 ${s.overall} (연애 ${s.love} 사업 ${s.career} 금전 ${s.money} 건강 ${s.health})`)
+    console.log(
+      `    ${b.label} 대운 ${b.daeun} 종합 ${s.overall} ` +
+        `(연애 ${s.love} 취업 ${s.job} 사업 ${s.career} 금전 ${s.money} 학업 ${s.study} 건강 ${s.health})`
+    )
   }
 }

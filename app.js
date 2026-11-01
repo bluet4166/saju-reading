@@ -15,8 +15,10 @@
 
   const DIMS = [
     { key: 'love', label: '연애운', raw: '#f472b6' },
+    { key: 'job', label: '취업운', raw: '#a78bfa' },
     { key: 'career', label: '사업운', raw: '#fbbf24' },
     { key: 'money', label: '금전운', raw: '#4ade80' },
+    { key: 'study', label: '학업운', raw: '#22d3ee' },
     { key: 'health', label: '건강운', raw: '#60a5fa' },
   ]
   const EL_KO = { wood: '목', fire: '화', earth: '토', metal: '금', water: '수' }
@@ -32,7 +34,7 @@
     return n
   }
 
-  const visible = { love: true, career: true, money: true, health: true }
+  const visible = { love: true, job: true, career: true, money: true, study: true, health: true }
 
   /* --------------------------------------------------- 인물 전환 */
 
@@ -223,7 +225,8 @@
     const n = p.buckets.length
     const band = innerW / n
     const activeDims = DIMS.filter((d) => visible[d.key])
-    const barW = Math.min(24, (band * 0.62) / Math.max(activeDims.length, 1))
+    const barW = Math.min(18, (band * 0.74) / Math.max(activeDims.length, 1))
+    const gap = 4
 
     for (let v = d0; v <= d1; v += 10) {
       svg.appendChild(svgEl('line', { class: 'grid-line', x1: pad.l, x2: W - pad.r, y1: y(v), y2: y(v) }))
@@ -248,7 +251,7 @@
       dl.textContent = `대운 ${b.daeun}`
       svg.appendChild(dl)
 
-      const groupW = barW * activeDims.length + 6 * (activeDims.length - 1)
+      const groupW = barW * activeDims.length + gap * (activeDims.length - 1)
       let bx = cx - groupW / 2
 
       activeDims.forEach((d) => {
@@ -260,19 +263,21 @@
           fill: d.raw, opacity: 0.72,
         }))
 
-        const hit = svgEl('rect', { class: 'bar-hit', x: bx - 3, y: pad.t, width: barW + 6, height: innerH })
+        const hit = svgEl('rect', { class: 'bar-hit', x: bx - 2, y: pad.t, width: barW + 4, height: innerH })
         hit.addEventListener('mouseenter', () => showBucketTip(i, cx, y(b.scores.overall)))
         hit.addEventListener('mouseleave', hideTips)
         svg.appendChild(hit)
 
-        const lbl = svgEl('text', {
-          x: bx + barW / 2, y: top - 7, 'text-anchor': 'middle',
-          style: `fill:${d.raw};font-size:10.5px;opacity:.85`,
-        })
-        lbl.textContent = v
-        svg.appendChild(lbl)
+        if (barW >= 16) {
+          const lbl = svgEl('text', {
+            x: bx + barW / 2, y: top - 7, 'text-anchor': 'middle',
+            style: `fill:${d.raw};font-size:10px;opacity:.85`,
+          })
+          lbl.textContent = v
+          svg.appendChild(lbl)
+        }
 
-        bx += barW + 6
+        bx += barW + gap
       })
 
       const xl = svgEl('text', { x: cx, y: pad.t + innerH + 24, 'text-anchor': 'middle', style: 'fill:var(--ink-dim)' })
@@ -326,8 +331,10 @@
           <td>${b.label}${cur ? ' <span class="daeun-pill" style="background:rgba(217,179,108,.18);color:var(--gold)">현재</span>' : ''}</td>
           <td><span class="daeun-pill">${b.daeun}</span></td>
           <td>${b.scores.love}</td>
+          <td>${b.scores.job}</td>
           <td>${b.scores.career}</td>
           <td>${b.scores.money}</td>
+          <td>${b.scores.study}</td>
           <td>${b.scores.health}</td>
           <td class="total">${b.scores.overall}</td>
         </tr>`
@@ -443,7 +450,7 @@
 
   function renderTopics() {
     const p = P()
-    const topics = ['love', 'career', 'money', 'health'].map((k) => p.topics[k])
+    const topics = ['love', 'job', 'career', 'money', 'study', 'health'].map((k) => p.topics[k])
 
     $('#tabs').innerHTML = topics
       .map(
@@ -506,6 +513,17 @@
   function renderMethod() {
     const p = P()
     const base = p.scoreModel.elementBase
+    const ROLE_KO = { peer: '비겁', output: '식상', wealth: '재성', officer: '관성', resource: '인성' }
+    const dimRows = DIMS.map(({ key, label }) => {
+      const w = D.meta.weights[key]
+      if (!w) return ''
+      const top = Object.entries(w).sort((a, b) => b[1] - a[1])[0]
+      const all = Object.entries(w)
+        .sort((a, b) => b[1] - a[1])
+        .map(([r, v]) => `${ROLE_KO[r]} ${v.toFixed(1)}`)
+        .join(' · ')
+      return `<tr><td>${label}</td><td>${ROLE_KO[top[0]]} ×${top[1].toFixed(1)}</td><td>${all}</td></tr>`
+    }).join('')
     const rows = ['wood', 'fire', 'earth', 'metal', 'water']
       .map((el) => `<tr>
         <td>${EL_KO[el]} (${EL_HANJA[el]})</td>
@@ -522,8 +540,14 @@
         <thead><tr><th>오행</th><th>개수</th><th>기본값</th><th>근거</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
-      <p>주제별 가중치 <code>w</code>는 연애(화 1.3) · 사업(금 1.2) · 금전(금 1.5) · 건강(수 1.3)처럼
-      각 영역이 민감한 오행에 더 큰 값을 줍니다. 따라서 같은 해라도 네 점수가 서로 다르게 나옵니다.</p>`
+      <p style="margin-top:14px"><strong>주제별 가중치는 오행이 아니라 십성 역할에 붙습니다.</strong>
+      사람마다 용신 오행이 달라도 같은 해석 틀을 유지하기 위해서입니다.</p>
+      <table class="model-table">
+        <thead><tr><th>주제</th><th>가장 민감한 역할</th><th>가중치</th></tr></thead>
+        <tbody>${dimRows}</tbody>
+      </table>
+      <p>예를 들어 취업운은 관성(조직·직책)에, 학업운은 인성(배움·자격)에 가장 민감합니다.
+      같은 해라도 네 사람의 점수가 서로 다른 이유가 여기에 있습니다.</p>`
 
     $('#disclaimer').textContent = D.meta.disclaimer
     $('#footerMeta').textContent =

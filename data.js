@@ -1,40 +1,61 @@
 /* 자동 생성 파일 — tools/generate-data.mjs 로 재생성하세요 */
 window.SAJU_DATA = {
   "meta": {
-    "generatedAt": "2026-11-01T05:32:43.160Z",
+    "generatedAt": "2026-11-01T05:35:48.309Z",
     "engine": "saju-fortune (npm) — 로컬 계산, MCP 미사용",
     "disclaimer": "이 페이지는 전통 해석에 기반한 참고 자료입니다. 의료·투자·법률 판단을 대신하지 않으며, 점수는 길흉의 확정이 아니라 상대적 흐름을 보여 주는 지표입니다.",
     "formula": "연도점수 = 50 + (천간값×w + 지지값×0.8×w)×1.6 + 대운보정",
-    "aggregation": "5년 구간 점수 = 해당 구간 연도 점수의 평균",
+    "aggregation": "5년 구간 점수 = 해당 구간 연도 점수의 평균 · 종합 = 6개 주제의 평균",
     "weights": {
       "love": {
-        "wood": 1,
-        "fire": 1.3,
-        "earth": 0.6,
-        "metal": 0.7,
-        "water": 0.9
+        "peer": 1,
+        "output": 1.4,
+        "wealth": 1.8,
+        "officer": 1.5,
+        "resource": 0.9
       },
       "career": {
-        "wood": 1,
-        "fire": 0.8,
-        "earth": 1.1,
-        "metal": 1.2,
-        "water": 0.9
+        "peer": 0.9,
+        "output": 1.8,
+        "wealth": 1.3,
+        "officer": 1.5,
+        "resource": 1
+      },
+      "job": {
+        "peer": 0.8,
+        "output": 0.7,
+        "wealth": 1.1,
+        "officer": 2.2,
+        "resource": 1
       },
       "money": {
-        "wood": 0.6,
-        "fire": 0.7,
-        "earth": 1,
-        "metal": 1.5,
-        "water": 0.8
+        "peer": 0.6,
+        "output": 1.2,
+        "wealth": 2.2,
+        "officer": 0.7,
+        "resource": 0.5
+      },
+      "study": {
+        "peer": 1,
+        "output": 0.8,
+        "wealth": 0.6,
+        "officer": 0.9,
+        "resource": 2.2
       },
       "health": {
-        "wood": 1.1,
-        "fire": 1.2,
-        "earth": 0.9,
-        "metal": 0.8,
-        "water": 1.3
+        "peer": 1.5,
+        "output": 1,
+        "wealth": 0.8,
+        "officer": 1.2,
+        "resource": 1.4
       }
+    },
+    "roleLabels": {
+      "peer": "비겁",
+      "output": "식상",
+      "wealth": "재성",
+      "officer": "관성",
+      "resource": "인성"
     }
   },
   "people": [
@@ -295,34 +316,40 @@ window.SAJU_DATA = {
           "daeun": "무인",
           "daeunHanja": "戊寅",
           "scores": {
-            "love": 62,
+            "overall": 60,
+            "love": 60,
             "career": 58,
+            "job": 59,
             "money": 58,
-            "health": 61,
-            "overall": 60
+            "study": 59,
+            "health": 63
           },
           "bestYear": 2026,
-          "bestScore": 76,
+          "bestScore": 75,
           "years": [
             {
               "year": 2026,
               "label": "병오",
               "scores": {
-                "love": 83,
-                "career": 71,
-                "money": 69,
-                "health": 81,
-                "overall": 76
+                "love": 76,
+                "career": 74,
+                "job": 71,
+                "money": 67,
+                "study": 76,
+                "health": 88,
+                "overall": 75
               }
             },
             {
               "year": 2027,
               "label": "정미",
               "scores": {
-                "love": 68,
+                "love": 62,
                 "career": 60,
-                "money": 59,
-                "health": 66,
+                "job": 61,
+                "money": 58,
+                "study": 64,
+                "health": 70,
                 "overall": 63
               }
             },
@@ -331,8 +358,10 @@ window.SAJU_DATA = {
               "label": "무신",
               "scores": {
                 "love": 53,
-                "career": 53,
-                "money": 54,
+                "career": 51,
+                "job": 54,
+                "money": 55,
+                "study": 52,
                 "health": 52,
                 "overall": 53
               }
@@ -342,8 +371,10 @@ window.SAJU_DATA = {
               "label": "기유",
               "scores": {
                 "love": 53,
-                "career": 53,
-                "money": 54,
+                "career": 51,
+                "job": 54,
+                "money": 55,
+                "study": 52,
                 "health": 52,
                 "overall": 53
               }
@@ -352,9 +383,11 @@ window.SAJU_DATA = {
               "year": 2030,
               "label": "경술",
               "scores": {
-                "love": 54,
-                "career": 54,
-                "money": 55,
+                "love": 55,
+                "career": 53,
+                "job": 55,
+                "money": 57,
+                "study": 53,
                 "health": 53,
                 "overall": 54
               }
@@ -368,68 +401,80 @@ window.SAJU_DATA = {
           "daeun": "무인",
           "daeunHanja": "戊寅",
           "scores": {
-            "love": 59,
-            "career": 60,
-            "money": 56,
-            "health": 58,
-            "overall": 58
+            "overall": 58,
+            "love": 55,
+            "career": 56,
+            "job": 52,
+            "money": 55,
+            "study": 65,
+            "health": 62
           },
           "bestYear": 2034,
-          "bestScore": 80,
+          "bestScore": 83,
           "years": [
             {
               "year": 2031,
               "label": "신해",
               "scores": {
                 "love": 49,
-                "career": 51,
-                "money": 53,
-                "health": 47,
-                "overall": 50
+                "career": 48,
+                "job": 42,
+                "money": 56,
+                "study": 49,
+                "health": 48,
+                "overall": 49
               }
             },
             {
               "year": 2032,
               "label": "임자",
               "scores": {
-                "love": 40,
-                "career": 40,
-                "money": 41,
-                "health": 34,
-                "overall": 39
+                "love": 31,
+                "career": 31,
+                "job": 21,
+                "money": 43,
+                "study": 40,
+                "health": 36,
+                "overall": 34
               }
             },
             {
               "year": 2033,
               "label": "계축",
               "scores": {
-                "love": 44,
-                "career": 43,
+                "love": 37,
+                "career": 36,
+                "job": 34,
                 "money": 44,
-                "health": 40,
-                "overall": 43
+                "study": 44,
+                "health": 41,
+                "overall": 39
               }
             },
             {
               "year": 2034,
               "label": "갑인",
               "scores": {
-                "love": 82,
+                "love": 79,
                 "career": 82,
-                "money": 70,
-                "health": 85,
-                "overall": 80
+                "job": 82,
+                "money": 67,
+                "study": 97,
+                "health": 93,
+                "overall": 83
               }
             },
             {
               "year": 2035,
               "label": "을묘",
               "scores": {
-                "love": 82,
+                "love": 79,
                 "career": 82,
-                "money": 70,
-                "health": 85,
-                "overall": 80
+                "job": 82,
+                "money": 67,
+                "study": 97,
+                "health": 93,
+                "overall": 83
               }
             }
           ]
@@ -441,23 +486,27 @@ window.SAJU_DATA = {
           "daeun": "기묘",
           "daeunHanja": "己卯",
           "scores": {
-            "love": 64,
+            "overall": 61,
+            "love": 61,
             "career": 59,
-            "money": 59,
-            "health": 63,
-            "overall": 61
+            "job": 60,
+            "money": 58,
+            "study": 61,
+            "health": 66
           },
           "bestYear": 2037,
-          "bestScore": 76,
+          "bestScore": 75,
           "years": [
             {
               "year": 2036,
               "label": "병진",
               "scores": {
-                "love": 68,
+                "love": 62,
                 "career": 60,
-                "money": 59,
-                "health": 66,
+                "job": 61,
+                "money": 58,
+                "study": 64,
+                "health": 70,
                 "overall": 63
               }
             },
@@ -465,44 +514,52 @@ window.SAJU_DATA = {
               "year": 2037,
               "label": "정사",
               "scores": {
-                "love": 83,
-                "career": 71,
-                "money": 69,
-                "health": 81,
-                "overall": 76
+                "love": 76,
+                "career": 74,
+                "job": 71,
+                "money": 67,
+                "study": 76,
+                "health": 88,
+                "overall": 75
               }
             },
             {
               "year": 2038,
               "label": "무오",
               "scores": {
-                "love": 64,
-                "career": 58,
-                "money": 57,
-                "health": 62,
-                "overall": 60
+                "love": 59,
+                "career": 56,
+                "job": 59,
+                "money": 55,
+                "study": 61,
+                "health": 65,
+                "overall": 59
               }
             },
             {
               "year": 2039,
               "label": "기미",
               "scores": {
-                "love": 50,
-                "career": 47,
-                "money": 47,
-                "health": 48,
-                "overall": 48
+                "love": 45,
+                "career": 43,
+                "job": 49,
+                "money": 46,
+                "study": 48,
+                "health": 47,
+                "overall": 46
               }
             },
             {
               "year": 2040,
               "label": "경신",
               "scores": {
-                "love": 57,
+                "love": 63,
                 "career": 60,
-                "money": 62,
+                "job": 59,
+                "money": 66,
+                "study": 56,
                 "health": 58,
-                "overall": 59
+                "overall": 60
               }
             }
           ]
@@ -514,68 +571,80 @@ window.SAJU_DATA = {
           "daeun": "기묘",
           "daeunHanja": "己卯",
           "scores": {
-            "love": 52,
-            "career": 52,
-            "money": 50,
-            "health": 50,
-            "overall": 51
+            "overall": 51,
+            "love": 48,
+            "career": 48,
+            "job": 45,
+            "money": 51,
+            "study": 59,
+            "health": 53
           },
           "bestYear": 2045,
-          "bestScore": 62,
+          "bestScore": 66,
           "years": [
             {
               "year": 2041,
               "label": "신유",
               "scores": {
-                "love": 57,
+                "love": 63,
                 "career": 60,
-                "money": 62,
+                "job": 59,
+                "money": 66,
+                "study": 56,
                 "health": 58,
-                "overall": 59
+                "overall": 60
               }
             },
             {
               "year": 2042,
               "label": "임술",
               "scores": {
-                "love": 41,
-                "career": 40,
+                "love": 34,
+                "career": 33,
+                "job": 31,
                 "money": 41,
-                "health": 37,
-                "overall": 40
+                "study": 41,
+                "health": 38,
+                "overall": 36
               }
             },
             {
               "year": 2043,
               "label": "계해",
               "scores": {
-                "love": 37,
-                "career": 37,
-                "money": 38,
-                "health": 31,
-                "overall": 36
+                "love": 28,
+                "career": 28,
+                "job": 18,
+                "money": 40,
+                "study": 37,
+                "health": 33,
+                "overall": 31
               }
             },
             {
               "year": 2044,
               "label": "갑자",
               "scores": {
-                "love": 60,
-                "career": 60,
+                "love": 55,
+                "career": 56,
+                "job": 52,
                 "money": 54,
-                "health": 59,
-                "overall": 58
+                "study": 79,
+                "health": 65,
+                "overall": 60
               }
             },
             {
               "year": 2045,
               "label": "을축",
               "scores": {
-                "love": 64,
-                "career": 63,
-                "money": 57,
-                "health": 65,
-                "overall": 62
+                "love": 61,
+                "career": 61,
+                "job": 64,
+                "money": 55,
+                "study": 83,
+                "health": 70,
+                "overall": 66
               }
             }
           ]
@@ -587,57 +656,67 @@ window.SAJU_DATA = {
           "daeun": "경진",
           "daeunHanja": "庚辰",
           "scores": {
-            "love": 66,
+            "overall": 63,
+            "love": 62,
             "career": 61,
-            "money": 59,
-            "health": 65,
-            "overall": 63
+            "job": 62,
+            "money": 57,
+            "study": 69,
+            "health": 70
           },
           "bestYear": 2046,
-          "bestScore": 75,
+          "bestScore": 77,
           "years": [
             {
               "year": 2046,
               "label": "병인",
               "scores": {
-                "love": 79,
-                "career": 73,
-                "money": 67,
-                "health": 79,
-                "overall": 75
+                "love": 74,
+                "career": 74,
+                "job": 73,
+                "money": 64,
+                "study": 91,
+                "health": 87,
+                "overall": 77
               }
             },
             {
               "year": 2047,
               "label": "정묘",
               "scores": {
-                "love": 79,
-                "career": 73,
-                "money": 67,
-                "health": 79,
-                "overall": 75
+                "love": 74,
+                "career": 74,
+                "job": 73,
+                "money": 64,
+                "study": 91,
+                "health": 87,
+                "overall": 77
               }
             },
             {
               "year": 2048,
               "label": "무진",
               "scores": {
-                "love": 47,
-                "career": 44,
-                "money": 44,
-                "health": 45,
-                "overall": 45
+                "love": 42,
+                "career": 40,
+                "job": 46,
+                "money": 43,
+                "study": 45,
+                "health": 44,
+                "overall": 43
               }
             },
             {
               "year": 2049,
               "label": "기사",
               "scores": {
-                "love": 61,
-                "career": 55,
-                "money": 54,
-                "health": 59,
-                "overall": 57
+                "love": 56,
+                "career": 53,
+                "job": 56,
+                "money": 52,
+                "study": 58,
+                "health": 62,
+                "overall": 56
               }
             },
             {
@@ -645,9 +724,11 @@ window.SAJU_DATA = {
               "label": "경오",
               "scores": {
                 "love": 66,
-                "career": 62,
-                "money": 62,
-                "health": 65,
+                "career": 63,
+                "job": 62,
+                "money": 63,
+                "study": 62,
+                "health": 68,
                 "overall": 64
               }
             }
@@ -667,11 +748,13 @@ window.SAJU_DATA = {
           "hanja": "丙午",
           "daeun": "무인",
           "scores": {
-            "love": 83,
-            "career": 71,
-            "money": 69,
-            "health": 81,
-            "overall": 76
+            "love": 76,
+            "career": 74,
+            "job": 71,
+            "money": 67,
+            "study": 76,
+            "health": 88,
+            "overall": 75
           }
         },
         {
@@ -686,10 +769,12 @@ window.SAJU_DATA = {
           "hanja": "丁未",
           "daeun": "무인",
           "scores": {
-            "love": 68,
+            "love": 62,
             "career": 60,
-            "money": 59,
-            "health": 66,
+            "job": 61,
+            "money": 58,
+            "study": 64,
+            "health": 70,
             "overall": 63
           }
         },
@@ -706,8 +791,10 @@ window.SAJU_DATA = {
           "daeun": "무인",
           "scores": {
             "love": 53,
-            "career": 53,
-            "money": 54,
+            "career": 51,
+            "job": 54,
+            "money": 55,
+            "study": 52,
             "health": 52,
             "overall": 53
           }
@@ -725,8 +812,10 @@ window.SAJU_DATA = {
           "daeun": "무인",
           "scores": {
             "love": 53,
-            "career": 53,
-            "money": 54,
+            "career": 51,
+            "job": 54,
+            "money": 55,
+            "study": 52,
             "health": 52,
             "overall": 53
           }
@@ -743,9 +832,11 @@ window.SAJU_DATA = {
           "hanja": "庚戌",
           "daeun": "무인",
           "scores": {
-            "love": 54,
-            "career": 54,
-            "money": 55,
+            "love": 55,
+            "career": 53,
+            "job": 55,
+            "money": 57,
+            "study": 53,
             "health": 53,
             "overall": 54
           }
@@ -763,10 +854,12 @@ window.SAJU_DATA = {
           "daeun": "무인",
           "scores": {
             "love": 49,
-            "career": 51,
-            "money": 53,
-            "health": 47,
-            "overall": 50
+            "career": 48,
+            "job": 42,
+            "money": 56,
+            "study": 49,
+            "health": 48,
+            "overall": 49
           }
         },
         {
@@ -781,11 +874,13 @@ window.SAJU_DATA = {
           "hanja": "壬子",
           "daeun": "기묘",
           "scores": {
-            "love": 40,
-            "career": 40,
-            "money": 41,
-            "health": 34,
-            "overall": 39
+            "love": 31,
+            "career": 31,
+            "job": 21,
+            "money": 43,
+            "study": 40,
+            "health": 36,
+            "overall": 34
           }
         },
         {
@@ -800,11 +895,13 @@ window.SAJU_DATA = {
           "hanja": "癸丑",
           "daeun": "기묘",
           "scores": {
-            "love": 44,
-            "career": 43,
+            "love": 37,
+            "career": 36,
+            "job": 34,
             "money": 44,
-            "health": 40,
-            "overall": 43
+            "study": 44,
+            "health": 41,
+            "overall": 39
           }
         },
         {
@@ -819,11 +916,13 @@ window.SAJU_DATA = {
           "hanja": "甲寅",
           "daeun": "기묘",
           "scores": {
-            "love": 82,
+            "love": 79,
             "career": 82,
-            "money": 70,
-            "health": 85,
-            "overall": 80
+            "job": 82,
+            "money": 67,
+            "study": 97,
+            "health": 93,
+            "overall": 83
           }
         },
         {
@@ -838,11 +937,13 @@ window.SAJU_DATA = {
           "hanja": "乙卯",
           "daeun": "기묘",
           "scores": {
-            "love": 82,
+            "love": 79,
             "career": 82,
-            "money": 70,
-            "health": 85,
-            "overall": 80
+            "job": 82,
+            "money": 67,
+            "study": 97,
+            "health": 93,
+            "overall": 83
           }
         },
         {
@@ -857,10 +958,12 @@ window.SAJU_DATA = {
           "hanja": "丙辰",
           "daeun": "기묘",
           "scores": {
-            "love": 68,
+            "love": 62,
             "career": 60,
-            "money": 59,
-            "health": 66,
+            "job": 61,
+            "money": 58,
+            "study": 64,
+            "health": 70,
             "overall": 63
           }
         },
@@ -876,11 +979,13 @@ window.SAJU_DATA = {
           "hanja": "丁巳",
           "daeun": "기묘",
           "scores": {
-            "love": 83,
-            "career": 71,
-            "money": 69,
-            "health": 81,
-            "overall": 76
+            "love": 76,
+            "career": 74,
+            "job": 71,
+            "money": 67,
+            "study": 76,
+            "health": 88,
+            "overall": 75
           }
         },
         {
@@ -895,11 +1000,13 @@ window.SAJU_DATA = {
           "hanja": "戊午",
           "daeun": "기묘",
           "scores": {
-            "love": 64,
-            "career": 58,
-            "money": 57,
-            "health": 62,
-            "overall": 60
+            "love": 59,
+            "career": 56,
+            "job": 59,
+            "money": 55,
+            "study": 61,
+            "health": 65,
+            "overall": 59
           }
         },
         {
@@ -914,11 +1021,13 @@ window.SAJU_DATA = {
           "hanja": "己未",
           "daeun": "기묘",
           "scores": {
-            "love": 50,
-            "career": 47,
-            "money": 47,
-            "health": 48,
-            "overall": 48
+            "love": 45,
+            "career": 43,
+            "job": 49,
+            "money": 46,
+            "study": 48,
+            "health": 47,
+            "overall": 46
           }
         },
         {
@@ -933,11 +1042,13 @@ window.SAJU_DATA = {
           "hanja": "庚申",
           "daeun": "기묘",
           "scores": {
-            "love": 57,
+            "love": 63,
             "career": 60,
-            "money": 62,
+            "job": 59,
+            "money": 66,
+            "study": 56,
             "health": 58,
-            "overall": 59
+            "overall": 60
           }
         },
         {
@@ -952,11 +1063,13 @@ window.SAJU_DATA = {
           "hanja": "辛酉",
           "daeun": "기묘",
           "scores": {
-            "love": 57,
+            "love": 63,
             "career": 60,
-            "money": 62,
+            "job": 59,
+            "money": 66,
+            "study": 56,
             "health": 58,
-            "overall": 59
+            "overall": 60
           }
         },
         {
@@ -971,11 +1084,13 @@ window.SAJU_DATA = {
           "hanja": "壬戌",
           "daeun": "경진",
           "scores": {
-            "love": 41,
-            "career": 40,
+            "love": 34,
+            "career": 33,
+            "job": 31,
             "money": 41,
-            "health": 37,
-            "overall": 40
+            "study": 41,
+            "health": 38,
+            "overall": 36
           }
         },
         {
@@ -990,11 +1105,13 @@ window.SAJU_DATA = {
           "hanja": "癸亥",
           "daeun": "경진",
           "scores": {
-            "love": 37,
-            "career": 37,
-            "money": 38,
-            "health": 31,
-            "overall": 36
+            "love": 28,
+            "career": 28,
+            "job": 18,
+            "money": 40,
+            "study": 37,
+            "health": 33,
+            "overall": 31
           }
         },
         {
@@ -1009,11 +1126,13 @@ window.SAJU_DATA = {
           "hanja": "甲子",
           "daeun": "경진",
           "scores": {
-            "love": 60,
-            "career": 60,
+            "love": 55,
+            "career": 56,
+            "job": 52,
             "money": 54,
-            "health": 59,
-            "overall": 58
+            "study": 79,
+            "health": 65,
+            "overall": 60
           }
         },
         {
@@ -1028,11 +1147,13 @@ window.SAJU_DATA = {
           "hanja": "乙丑",
           "daeun": "경진",
           "scores": {
-            "love": 64,
-            "career": 63,
-            "money": 57,
-            "health": 65,
-            "overall": 62
+            "love": 61,
+            "career": 61,
+            "job": 64,
+            "money": 55,
+            "study": 83,
+            "health": 70,
+            "overall": 66
           }
         },
         {
@@ -1047,11 +1168,13 @@ window.SAJU_DATA = {
           "hanja": "丙寅",
           "daeun": "경진",
           "scores": {
-            "love": 79,
-            "career": 73,
-            "money": 67,
-            "health": 79,
-            "overall": 75
+            "love": 74,
+            "career": 74,
+            "job": 73,
+            "money": 64,
+            "study": 91,
+            "health": 87,
+            "overall": 77
           }
         },
         {
@@ -1066,11 +1189,13 @@ window.SAJU_DATA = {
           "hanja": "丁卯",
           "daeun": "경진",
           "scores": {
-            "love": 79,
-            "career": 73,
-            "money": 67,
-            "health": 79,
-            "overall": 75
+            "love": 74,
+            "career": 74,
+            "job": 73,
+            "money": 64,
+            "study": 91,
+            "health": 87,
+            "overall": 77
           }
         },
         {
@@ -1085,11 +1210,13 @@ window.SAJU_DATA = {
           "hanja": "戊辰",
           "daeun": "경진",
           "scores": {
-            "love": 47,
-            "career": 44,
-            "money": 44,
-            "health": 45,
-            "overall": 45
+            "love": 42,
+            "career": 40,
+            "job": 46,
+            "money": 43,
+            "study": 45,
+            "health": 44,
+            "overall": 43
           }
         },
         {
@@ -1104,11 +1231,13 @@ window.SAJU_DATA = {
           "hanja": "己巳",
           "daeun": "경진",
           "scores": {
-            "love": 61,
-            "career": 55,
-            "money": 54,
-            "health": 59,
-            "overall": 57
+            "love": 56,
+            "career": 53,
+            "job": 56,
+            "money": 52,
+            "study": 58,
+            "health": 62,
+            "overall": 56
           }
         },
         {
@@ -1124,9 +1253,11 @@ window.SAJU_DATA = {
           "daeun": "경진",
           "scores": {
             "love": 66,
-            "career": 62,
-            "money": 62,
-            "health": 65,
+            "career": 63,
+            "job": 62,
+            "money": 63,
+            "study": 62,
+            "health": 68,
             "overall": 64
           }
         }
@@ -1134,7 +1265,7 @@ window.SAJU_DATA = {
       "peakYear": {
         "year": 2034,
         "label": "갑인",
-        "score": 80
+        "score": 83
       },
       "topics": {
         "love": {
@@ -1159,7 +1290,7 @@ window.SAJU_DATA = {
             "붉은 계열 소품, 꽃, 따뜻한 조명이 화 기운을 보완합니다"
           ],
           "key": "love",
-          "score": 83
+          "score": 76
         },
         "career": {
           "title": "사업운",
@@ -1183,6 +1314,30 @@ window.SAJU_DATA = {
             "큰 결정은 하루 묵혔다가 진행하세요"
           ],
           "key": "career",
+          "score": 74
+        },
+        "job": {
+          "title": "취업운",
+          "hanja": "職",
+          "accent": "#a78bfa",
+          "headline": "재취업·이직은 \"정리해서 넘기는 능력\"으로 승부",
+          "summary": "관성(수)이 약한 사주라 조직의 규칙에 몸을 맞추는 데 에너지가 듭니다. 대신 인성(목)이 두 자리로 강해 기획·문서·교육·자문에서 신뢰를 얻습니다. 새 기술보다 \"이미 쌓은 것을 구조화해 전달하는 역할\"에서 문이 열립니다.",
+          "strengths": [
+            "경험을 문서와 체계로 정리하는 힘",
+            "사람을 가르치고 이끄는 신뢰",
+            "끝까지 마무리하는 책임감"
+          ],
+          "cautions": [
+            "연봉·조건 협상에서 스스로를 낮게 부릅니다",
+            "새 환경의 암묵적 규칙에 적응하는 데 시간이 걸립니다",
+            "인맥 관리가 소홀해지면 기회가 끊깁니다"
+          ],
+          "advice": [
+            "경력기술서를 \"역할-성과-수치\"로 다시 쓰세요",
+            "자문·강의·프로젝트 단위 계약을 먼저 시도하세요",
+            "분기마다 지인 3명에게 근황을 전하세요"
+          ],
+          "key": "job",
           "score": 71
         },
         "money": {
@@ -1207,7 +1362,29 @@ window.SAJU_DATA = {
             "큰 지출 전 하루 대기 규칙이 특히 효과적입니다"
           ],
           "key": "money",
-          "score": 69
+          "score": 67
+        },
+        "study": {
+          "title": "학업운",
+          "hanja": "學",
+          "accent": "#22d3ee",
+          "headline": "배움 자체가 운을 여는 구조",
+          "summary": "인성(목)이 용신이자 두 자리에 있어 학습이 곧 운의 연료입니다. 다만 화(집중·발산)가 얕아 오래 앉아 있는 공부보다 짧게 반복하는 방식이 맞습니다.",
+          "strengths": [
+            "구조를 파악해 자기 언어로 바꾸는 이해력",
+            "한 번 이해하면 오래 가는 기억"
+          ],
+          "cautions": [
+            "완벽하게 이해할 때까지 시작을 미룹니다",
+            "이론에 머물고 실습을 건너뜁니다"
+          ],
+          "advice": [
+            "하루 25분 단위로 나눠 반복하세요",
+            "배운 것을 한 장 요약으로 남기세요",
+            "자격증·강의 중 하나를 골라 끝까지 마무리하세요"
+          ],
+          "key": "study",
+          "score": 76
         },
         "health": {
           "title": "건강운",
@@ -1231,7 +1408,7 @@ window.SAJU_DATA = {
             "갱년기 관련 증상은 사주가 아니라 전문의 상담으로"
           ],
           "key": "health",
-          "score": 81
+          "score": 88
         }
       }
     },
@@ -1489,68 +1666,80 @@ window.SAJU_DATA = {
           "daeun": "무자",
           "daeunHanja": "戊子",
           "scores": {
-            "love": 67,
-            "career": 68,
+            "overall": 72,
+            "love": 77,
+            "career": 78,
+            "job": 76,
             "money": 70,
-            "health": 67,
-            "overall": 68
+            "study": 64,
+            "health": 69
           },
           "bestYear": 2026,
-          "bestScore": 73,
+          "bestScore": 76,
           "years": [
             {
               "year": 2026,
               "label": "병오",
               "scores": {
-                "love": 80,
-                "career": 68,
-                "money": 66,
-                "health": 78,
-                "overall": 73
+                "love": 82,
+                "career": 91,
+                "job": 66,
+                "money": 78,
+                "study": 68,
+                "health": 73,
+                "overall": 76
               }
             },
             {
               "year": 2027,
               "label": "정미",
               "scores": {
-                "love": 68,
-                "career": 63,
-                "money": 62,
-                "health": 68,
-                "overall": 65
+                "love": 73,
+                "career": 76,
+                "job": 62,
+                "money": 71,
+                "study": 62,
+                "health": 65,
+                "overall": 68
               }
             },
             {
               "year": 2028,
               "label": "무신",
               "scores": {
-                "love": 61,
-                "career": 69,
-                "money": 72,
-                "health": 63,
-                "overall": 66
+                "love": 75,
+                "career": 73,
+                "job": 82,
+                "money": 66,
+                "study": 63,
+                "health": 68,
+                "overall": 71
               }
             },
             {
               "year": 2029,
               "label": "기유",
               "scores": {
-                "love": 61,
-                "career": 69,
-                "money": 72,
-                "health": 63,
-                "overall": 66
+                "love": 75,
+                "career": 73,
+                "job": 82,
+                "money": 66,
+                "study": 63,
+                "health": 68,
+                "overall": 71
               }
             },
             {
               "year": 2030,
               "label": "경술",
               "scores": {
-                "love": 63,
-                "career": 72,
-                "money": 77,
-                "health": 65,
-                "overall": 69
+                "love": 79,
+                "career": 77,
+                "job": 88,
+                "money": 67,
+                "study": 66,
+                "health": 71,
+                "overall": 75
               }
             }
           ]
@@ -1562,24 +1751,28 @@ window.SAJU_DATA = {
           "daeun": "무자",
           "daeunHanja": "戊子",
           "scores": {
-            "love": 50,
-            "career": 52,
-            "money": 54,
-            "health": 51,
-            "overall": 52
+            "overall": 53,
+            "love": 53,
+            "career": 53,
+            "job": 56,
+            "money": 52,
+            "study": 51,
+            "health": 51
           },
           "bestYear": 2031,
-          "bestScore": 67,
+          "bestScore": 71,
           "years": [
             {
               "year": 2031,
               "label": "신해",
               "scores": {
-                "love": 61,
-                "career": 69,
-                "money": 74,
-                "health": 63,
-                "overall": 67
+                "love": 74,
+                "career": 74,
+                "job": 85,
+                "money": 61,
+                "study": 64,
+                "health": 69,
+                "overall": 71
               }
             },
             {
@@ -1588,7 +1781,9 @@ window.SAJU_DATA = {
               "scores": {
                 "love": 50,
                 "career": 50,
+                "job": 50,
                 "money": 50,
+                "study": 50,
                 "health": 50,
                 "overall": 50
               }
@@ -1597,11 +1792,13 @@ window.SAJU_DATA = {
               "year": 2033,
               "label": "계축",
               "scores": {
-                "love": 52,
+                "love": 55,
                 "career": 53,
-                "money": 53,
+                "job": 53,
+                "money": 56,
+                "study": 52,
                 "health": 52,
-                "overall": 53
+                "overall": 54
               }
             },
             {
@@ -1609,10 +1806,12 @@ window.SAJU_DATA = {
               "label": "갑인",
               "scores": {
                 "love": 44,
-                "career": 44,
+                "career": 45,
+                "job": 45,
                 "money": 47,
-                "health": 44,
-                "overall": 45
+                "study": 44,
+                "health": 41,
+                "overall": 44
               }
             },
             {
@@ -1620,10 +1819,12 @@ window.SAJU_DATA = {
               "label": "을묘",
               "scores": {
                 "love": 44,
-                "career": 44,
+                "career": 45,
+                "job": 45,
                 "money": 47,
-                "health": 44,
-                "overall": 45
+                "study": 44,
+                "health": 41,
+                "overall": 44
               }
             }
           ]
@@ -1635,68 +1836,80 @@ window.SAJU_DATA = {
           "daeun": "기축",
           "daeunHanja": "己丑",
           "scores": {
-            "love": 67,
-            "career": 67,
-            "money": 67,
-            "health": 68,
-            "overall": 67
+            "overall": 71,
+            "love": 76,
+            "career": 78,
+            "job": 68,
+            "money": 70,
+            "study": 64,
+            "health": 68
           },
           "bestYear": 2040,
-          "bestScore": 80,
+          "bestScore": 86,
           "years": [
             {
               "year": 2036,
               "label": "병진",
               "scores": {
-                "love": 68,
-                "career": 63,
-                "money": 62,
-                "health": 68,
-                "overall": 65
+                "love": 73,
+                "career": 76,
+                "job": 62,
+                "money": 71,
+                "study": 62,
+                "health": 65,
+                "overall": 68
               }
             },
             {
               "year": 2037,
               "label": "정사",
               "scores": {
-                "love": 80,
-                "career": 68,
-                "money": 66,
-                "health": 78,
-                "overall": 73
+                "love": 82,
+                "career": 91,
+                "job": 66,
+                "money": 78,
+                "study": 68,
+                "health": 73,
+                "overall": 76
               }
             },
             {
               "year": 2038,
               "label": "무오",
               "scores": {
-                "love": 65,
-                "career": 62,
-                "money": 60,
-                "health": 65,
-                "overall": 63
+                "love": 70,
+                "career": 73,
+                "job": 61,
+                "money": 69,
+                "study": 60,
+                "health": 63,
+                "overall": 66
               }
             },
             {
               "year": 2039,
               "label": "기미",
               "scores": {
-                "love": 53,
-                "career": 56,
-                "money": 56,
+                "love": 60,
+                "career": 57,
+                "job": 56,
+                "money": 63,
+                "study": 53,
                 "health": 55,
-                "overall": 55
+                "overall": 57
               }
             },
             {
               "year": 2040,
               "label": "경신",
               "scores": {
-                "love": 70,
-                "career": 85,
-                "money": 93,
-                "health": 73,
-                "overall": 80
+                "love": 93,
+                "career": 93,
+                "job": 97,
+                "money": 70,
+                "study": 76,
+                "health": 85,
+                "overall": 86
               }
             }
           ]
@@ -1708,35 +1921,41 @@ window.SAJU_DATA = {
           "daeun": "기축",
           "daeunHanja": "己丑",
           "scores": {
-            "love": 55,
-            "career": 59,
-            "money": 61,
-            "health": 56,
-            "overall": 58
+            "overall": 59,
+            "love": 61,
+            "career": 60,
+            "job": 61,
+            "money": 57,
+            "study": 56,
+            "health": 58
           },
           "bestYear": 2041,
-          "bestScore": 80,
+          "bestScore": 86,
           "years": [
             {
               "year": 2041,
               "label": "신유",
               "scores": {
-                "love": 70,
-                "career": 85,
-                "money": 93,
-                "health": 73,
-                "overall": 80
+                "love": 93,
+                "career": 93,
+                "job": 97,
+                "money": 70,
+                "study": 76,
+                "health": 85,
+                "overall": 86
               }
             },
             {
               "year": 2042,
               "label": "임술",
               "scores": {
-                "love": 52,
+                "love": 55,
                 "career": 53,
-                "money": 53,
+                "job": 53,
+                "money": 56,
+                "study": 52,
                 "health": 52,
-                "overall": 53
+                "overall": 54
               }
             },
             {
@@ -1745,7 +1964,9 @@ window.SAJU_DATA = {
               "scores": {
                 "love": 53,
                 "career": 53,
+                "job": 53,
                 "money": 53,
+                "study": 53,
                 "health": 53,
                 "overall": 53
               }
@@ -1756,8 +1977,10 @@ window.SAJU_DATA = {
               "scores": {
                 "love": 50,
                 "career": 50,
+                "job": 50,
                 "money": 51,
-                "health": 49,
+                "study": 50,
+                "health": 48,
                 "overall": 50
               }
             },
@@ -1765,10 +1988,12 @@ window.SAJU_DATA = {
               "year": 2045,
               "label": "을축",
               "scores": {
-                "love": 51,
+                "love": 54,
                 "career": 53,
-                "money": 54,
-                "health": 52,
+                "job": 53,
+                "money": 57,
+                "study": 51,
+                "health": 50,
                 "overall": 53
               }
             }
@@ -1781,68 +2006,80 @@ window.SAJU_DATA = {
           "daeun": "경인",
           "daeunHanja": "庚寅",
           "scores": {
-            "love": 67,
-            "career": 65,
-            "money": 65,
-            "health": 67,
-            "overall": 66
+            "overall": 69,
+            "love": 73,
+            "career": 76,
+            "job": 68,
+            "money": 70,
+            "study": 63,
+            "health": 66
           },
           "bestYear": 2050,
-          "bestScore": 80,
+          "bestScore": 86,
           "years": [
             {
               "year": 2046,
               "label": "병인",
               "scores": {
-                "love": 67,
-                "career": 61,
-                "money": 60,
-                "health": 66,
-                "overall": 64
+                "love": 68,
+                "career": 74,
+                "job": 60,
+                "money": 67,
+                "study": 61,
+                "health": 62,
+                "overall": 65
               }
             },
             {
               "year": 2047,
               "label": "정묘",
               "scores": {
-                "love": 67,
-                "career": 61,
-                "money": 60,
-                "health": 66,
-                "overall": 64
+                "love": 68,
+                "career": 74,
+                "job": 60,
+                "money": 67,
+                "study": 61,
+                "health": 62,
+                "overall": 65
               }
             },
             {
               "year": 2048,
               "label": "무진",
               "scores": {
-                "love": 56,
-                "career": 59,
-                "money": 59,
+                "love": 63,
+                "career": 60,
+                "job": 59,
+                "money": 66,
+                "study": 56,
                 "health": 58,
-                "overall": 58
+                "overall": 60
               }
             },
             {
               "year": 2049,
               "label": "기사",
               "scores": {
-                "love": 68,
-                "career": 65,
-                "money": 63,
-                "health": 68,
-                "overall": 66
+                "love": 73,
+                "career": 76,
+                "job": 64,
+                "money": 72,
+                "study": 63,
+                "health": 66,
+                "overall": 69
               }
             },
             {
               "year": 2050,
               "label": "경오",
               "scores": {
-                "love": 78,
-                "career": 80,
-                "money": 84,
-                "health": 78,
-                "overall": 80
+                "love": 91,
+                "career": 95,
+                "job": 95,
+                "money": 76,
+                "study": 76,
+                "health": 82,
+                "overall": 86
               }
             }
           ]
@@ -1861,11 +2098,13 @@ window.SAJU_DATA = {
           "hanja": "丙午",
           "daeun": "무자",
           "scores": {
-            "love": 80,
-            "career": 68,
-            "money": 66,
-            "health": 78,
-            "overall": 73
+            "love": 82,
+            "career": 91,
+            "job": 66,
+            "money": 78,
+            "study": 68,
+            "health": 73,
+            "overall": 76
           }
         },
         {
@@ -1880,11 +2119,13 @@ window.SAJU_DATA = {
           "hanja": "丁未",
           "daeun": "무자",
           "scores": {
-            "love": 68,
-            "career": 63,
-            "money": 62,
-            "health": 68,
-            "overall": 65
+            "love": 73,
+            "career": 76,
+            "job": 62,
+            "money": 71,
+            "study": 62,
+            "health": 65,
+            "overall": 68
           }
         },
         {
@@ -1899,11 +2140,13 @@ window.SAJU_DATA = {
           "hanja": "戊申",
           "daeun": "무자",
           "scores": {
-            "love": 61,
-            "career": 69,
-            "money": 72,
-            "health": 63,
-            "overall": 66
+            "love": 75,
+            "career": 73,
+            "job": 82,
+            "money": 66,
+            "study": 63,
+            "health": 68,
+            "overall": 71
           }
         },
         {
@@ -1918,11 +2161,13 @@ window.SAJU_DATA = {
           "hanja": "己酉",
           "daeun": "무자",
           "scores": {
-            "love": 61,
-            "career": 69,
-            "money": 72,
-            "health": 63,
-            "overall": 66
+            "love": 75,
+            "career": 73,
+            "job": 82,
+            "money": 66,
+            "study": 63,
+            "health": 68,
+            "overall": 71
           }
         },
         {
@@ -1937,11 +2182,13 @@ window.SAJU_DATA = {
           "hanja": "庚戌",
           "daeun": "무자",
           "scores": {
-            "love": 63,
-            "career": 72,
-            "money": 77,
-            "health": 65,
-            "overall": 69
+            "love": 79,
+            "career": 77,
+            "job": 88,
+            "money": 67,
+            "study": 66,
+            "health": 71,
+            "overall": 75
           }
         },
         {
@@ -1956,11 +2203,13 @@ window.SAJU_DATA = {
           "hanja": "辛亥",
           "daeun": "무자",
           "scores": {
-            "love": 61,
-            "career": 69,
-            "money": 74,
-            "health": 63,
-            "overall": 67
+            "love": 74,
+            "career": 74,
+            "job": 85,
+            "money": 61,
+            "study": 64,
+            "health": 69,
+            "overall": 71
           }
         },
         {
@@ -1977,7 +2226,9 @@ window.SAJU_DATA = {
           "scores": {
             "love": 50,
             "career": 50,
+            "job": 50,
             "money": 50,
+            "study": 50,
             "health": 50,
             "overall": 50
           }
@@ -1994,11 +2245,13 @@ window.SAJU_DATA = {
           "hanja": "癸丑",
           "daeun": "기축",
           "scores": {
-            "love": 52,
+            "love": 55,
             "career": 53,
-            "money": 53,
+            "job": 53,
+            "money": 56,
+            "study": 52,
             "health": 52,
-            "overall": 53
+            "overall": 54
           }
         },
         {
@@ -2014,10 +2267,12 @@ window.SAJU_DATA = {
           "daeun": "기축",
           "scores": {
             "love": 44,
-            "career": 44,
+            "career": 45,
+            "job": 45,
             "money": 47,
-            "health": 44,
-            "overall": 45
+            "study": 44,
+            "health": 41,
+            "overall": 44
           }
         },
         {
@@ -2033,10 +2288,12 @@ window.SAJU_DATA = {
           "daeun": "기축",
           "scores": {
             "love": 44,
-            "career": 44,
+            "career": 45,
+            "job": 45,
             "money": 47,
-            "health": 44,
-            "overall": 45
+            "study": 44,
+            "health": 41,
+            "overall": 44
           }
         },
         {
@@ -2051,11 +2308,13 @@ window.SAJU_DATA = {
           "hanja": "丙辰",
           "daeun": "기축",
           "scores": {
-            "love": 68,
-            "career": 63,
-            "money": 62,
-            "health": 68,
-            "overall": 65
+            "love": 73,
+            "career": 76,
+            "job": 62,
+            "money": 71,
+            "study": 62,
+            "health": 65,
+            "overall": 68
           }
         },
         {
@@ -2070,11 +2329,13 @@ window.SAJU_DATA = {
           "hanja": "丁巳",
           "daeun": "기축",
           "scores": {
-            "love": 80,
-            "career": 68,
-            "money": 66,
-            "health": 78,
-            "overall": 73
+            "love": 82,
+            "career": 91,
+            "job": 66,
+            "money": 78,
+            "study": 68,
+            "health": 73,
+            "overall": 76
           }
         },
         {
@@ -2089,11 +2350,13 @@ window.SAJU_DATA = {
           "hanja": "戊午",
           "daeun": "기축",
           "scores": {
-            "love": 65,
-            "career": 62,
-            "money": 60,
-            "health": 65,
-            "overall": 63
+            "love": 70,
+            "career": 73,
+            "job": 61,
+            "money": 69,
+            "study": 60,
+            "health": 63,
+            "overall": 66
           }
         },
         {
@@ -2108,11 +2371,13 @@ window.SAJU_DATA = {
           "hanja": "己未",
           "daeun": "기축",
           "scores": {
-            "love": 53,
-            "career": 56,
-            "money": 56,
+            "love": 60,
+            "career": 57,
+            "job": 56,
+            "money": 63,
+            "study": 53,
             "health": 55,
-            "overall": 55
+            "overall": 57
           }
         },
         {
@@ -2127,11 +2392,13 @@ window.SAJU_DATA = {
           "hanja": "庚申",
           "daeun": "기축",
           "scores": {
-            "love": 70,
-            "career": 85,
-            "money": 93,
-            "health": 73,
-            "overall": 80
+            "love": 93,
+            "career": 93,
+            "job": 97,
+            "money": 70,
+            "study": 76,
+            "health": 85,
+            "overall": 86
           }
         },
         {
@@ -2146,11 +2413,13 @@ window.SAJU_DATA = {
           "hanja": "辛酉",
           "daeun": "기축",
           "scores": {
-            "love": 70,
-            "career": 85,
-            "money": 93,
-            "health": 73,
-            "overall": 80
+            "love": 93,
+            "career": 93,
+            "job": 97,
+            "money": 70,
+            "study": 76,
+            "health": 85,
+            "overall": 86
           }
         },
         {
@@ -2165,11 +2434,13 @@ window.SAJU_DATA = {
           "hanja": "壬戌",
           "daeun": "기축",
           "scores": {
-            "love": 52,
+            "love": 55,
             "career": 53,
-            "money": 53,
+            "job": 53,
+            "money": 56,
+            "study": 52,
             "health": 52,
-            "overall": 53
+            "overall": 54
           }
         },
         {
@@ -2186,7 +2457,9 @@ window.SAJU_DATA = {
           "scores": {
             "love": 53,
             "career": 53,
+            "job": 53,
             "money": 53,
+            "study": 53,
             "health": 53,
             "overall": 53
           }
@@ -2205,8 +2478,10 @@ window.SAJU_DATA = {
           "scores": {
             "love": 50,
             "career": 50,
+            "job": 50,
             "money": 51,
-            "health": 49,
+            "study": 50,
+            "health": 48,
             "overall": 50
           }
         },
@@ -2222,10 +2497,12 @@ window.SAJU_DATA = {
           "hanja": "乙丑",
           "daeun": "경인",
           "scores": {
-            "love": 51,
+            "love": 54,
             "career": 53,
-            "money": 54,
-            "health": 52,
+            "job": 53,
+            "money": 57,
+            "study": 51,
+            "health": 50,
             "overall": 53
           }
         },
@@ -2241,11 +2518,13 @@ window.SAJU_DATA = {
           "hanja": "丙寅",
           "daeun": "경인",
           "scores": {
-            "love": 67,
-            "career": 61,
-            "money": 60,
-            "health": 66,
-            "overall": 64
+            "love": 68,
+            "career": 74,
+            "job": 60,
+            "money": 67,
+            "study": 61,
+            "health": 62,
+            "overall": 65
           }
         },
         {
@@ -2260,11 +2539,13 @@ window.SAJU_DATA = {
           "hanja": "丁卯",
           "daeun": "경인",
           "scores": {
-            "love": 67,
-            "career": 61,
-            "money": 60,
-            "health": 66,
-            "overall": 64
+            "love": 68,
+            "career": 74,
+            "job": 60,
+            "money": 67,
+            "study": 61,
+            "health": 62,
+            "overall": 65
           }
         },
         {
@@ -2279,11 +2560,13 @@ window.SAJU_DATA = {
           "hanja": "戊辰",
           "daeun": "경인",
           "scores": {
-            "love": 56,
-            "career": 59,
-            "money": 59,
+            "love": 63,
+            "career": 60,
+            "job": 59,
+            "money": 66,
+            "study": 56,
             "health": 58,
-            "overall": 58
+            "overall": 60
           }
         },
         {
@@ -2298,11 +2581,13 @@ window.SAJU_DATA = {
           "hanja": "己巳",
           "daeun": "경인",
           "scores": {
-            "love": 68,
-            "career": 65,
-            "money": 63,
-            "health": 68,
-            "overall": 66
+            "love": 73,
+            "career": 76,
+            "job": 64,
+            "money": 72,
+            "study": 63,
+            "health": 66,
+            "overall": 69
           }
         },
         {
@@ -2317,18 +2602,20 @@ window.SAJU_DATA = {
           "hanja": "庚午",
           "daeun": "경인",
           "scores": {
-            "love": 78,
-            "career": 80,
-            "money": 84,
-            "health": 78,
-            "overall": 80
+            "love": 91,
+            "career": 95,
+            "job": 95,
+            "money": 76,
+            "study": 76,
+            "health": 82,
+            "overall": 86
           }
         }
       ],
       "peakYear": {
         "year": 2040,
         "label": "경신",
-        "score": 80
+        "score": 86
       },
       "topics": {
         "love": {
@@ -2353,7 +2640,7 @@ window.SAJU_DATA = {
             "붉은 계열 소품·꽃·햇빛이 화 기운을 보완합니다"
           ],
           "key": "love",
-          "score": 80
+          "score": 82
         },
         "career": {
           "title": "사업운",
@@ -2377,7 +2664,30 @@ window.SAJU_DATA = {
             "기획·자문·감리처럼 지식을 파는 형태와 궁합이 좋습니다"
           ],
           "key": "career",
-          "score": 68
+          "score": 91
+        },
+        "job": {
+          "title": "취업운",
+          "hanja": "職",
+          "accent": "#a78bfa",
+          "headline": "조직 안에서 \"없으면 안 되는 자리\"를 만드는 쪽",
+          "summary": "관성(금)이 용신이라 조직·직장의 틀이 오히려 이 사람을 다듬어 줍니다. 다만 하나뿐이라 경쟁이 치열한 자리보다 전문성이 인정받는 자리가 맞습니다. 비겁이 강해 주도권 다툼이 생기기 쉬우니 관계선 관리가 관건입니다.",
+          "strengths": [
+            "한 분야를 깊이 파는 전문성",
+            "맡은 일을 조용히 완수하는 힘"
+          ],
+          "cautions": [
+            "성과를 말하지 않아 평가에서 밀립니다",
+            "상사와의 긴장이 관계를 각 세웁니다",
+            "남의 일까지 떠안습니다"
+          ],
+          "advice": [
+            "월 1회 성과를 숫자로 정리해 보고하세요",
+            "업무 범위를 문서로 확인하세요",
+            "전문 자격·경력 인증을 하나 더 확보하세요"
+          ],
+          "key": "job",
+          "score": 66
         },
         "money": {
           "title": "금전운",
@@ -2401,7 +2711,29 @@ window.SAJU_DATA = {
             "보증·대여는 원칙적으로 거절하는 규칙을 두세요"
           ],
           "key": "money",
-          "score": 66
+          "score": 78
+        },
+        "study": {
+          "title": "학업운",
+          "hanja": "學",
+          "accent": "#22d3ee",
+          "headline": "혼자 파고드는 공부에 강한 구조",
+          "summary": "인성(수)이 얇아 강의를 듣는 방식보다 스스로 파고들어 정리하는 쪽이 효율적입니다. 화(발산)가 없어 발표·구술처럼 순간 집중이 필요한 자리에는 대비가 필요합니다.",
+          "strengths": [
+            "혼자 깊이 파고드는 집중력",
+            "자기만의 방식으로 정리하는 힘"
+          ],
+          "cautions": [
+            "발표·구술처럼 말로 꺼내는 평가에 약합니다",
+            "진도 관리가 늦어지기 쉽습니다"
+          ],
+          "advice": [
+            "배운 것을 소리 내어 설명하는 연습을 하세요",
+            "주간 진도표를 눈에 보이는 곳에 두세요",
+            "물을 곁에 두고 학습 리듬을 유지하세요"
+          ],
+          "key": "study",
+          "score": 68
         },
         "health": {
           "title": "건강운",
@@ -2425,7 +2757,7 @@ window.SAJU_DATA = {
             "증상이 있으면 전문의 상담이 우선입니다"
           ],
           "key": "health",
-          "score": 78
+          "score": 73
         }
       }
     },
@@ -2683,11 +3015,13 @@ window.SAJU_DATA = {
           "daeun": "무자",
           "daeunHanja": "戊子",
           "scores": {
-            "love": 50,
+            "overall": 49,
+            "love": 48,
             "career": 48,
-            "money": 48,
-            "health": 50,
-            "overall": 49
+            "job": 50,
+            "money": 50,
+            "study": 49,
+            "health": 48
           },
           "bestYear": 2026,
           "bestScore": 53,
@@ -2698,7 +3032,9 @@ window.SAJU_DATA = {
               "scores": {
                 "love": 53,
                 "career": 53,
+                "job": 53,
                 "money": 53,
+                "study": 53,
                 "health": 53,
                 "overall": 53
               }
@@ -2707,21 +3043,25 @@ window.SAJU_DATA = {
               "year": 2027,
               "label": "정미",
               "scores": {
-                "love": 51,
-                "career": 50,
-                "money": 50,
-                "health": 51,
-                "overall": 51
+                "love": 50,
+                "career": 51,
+                "job": 51,
+                "money": 51,
+                "study": 50,
+                "health": 49,
+                "overall": 50
               }
             },
             {
               "year": 2028,
               "label": "무신",
               "scores": {
-                "love": 49,
+                "love": 46,
                 "career": 46,
-                "money": 46,
-                "health": 48,
+                "job": 49,
+                "money": 48,
+                "study": 48,
+                "health": 46,
                 "overall": 47
               }
             },
@@ -2729,10 +3069,12 @@ window.SAJU_DATA = {
               "year": 2029,
               "label": "기유",
               "scores": {
-                "love": 49,
+                "love": 46,
                 "career": 46,
-                "money": 46,
-                "health": 48,
+                "job": 49,
+                "money": 48,
+                "study": 48,
+                "health": 46,
                 "overall": 47
               }
             },
@@ -2740,10 +3082,12 @@ window.SAJU_DATA = {
               "year": 2030,
               "label": "경술",
               "scores": {
-                "love": 49,
-                "career": 46,
-                "money": 46,
-                "health": 48,
+                "love": 46,
+                "career": 45,
+                "job": 49,
+                "money": 48,
+                "study": 48,
+                "health": 46,
                 "overall": 47
               }
             }
@@ -2756,68 +3100,80 @@ window.SAJU_DATA = {
           "daeun": "무자",
           "daeunHanja": "戊子",
           "scores": {
-            "love": 70,
-            "career": 69,
-            "money": 63,
-            "health": 74,
-            "overall": 69
+            "overall": 76,
+            "love": 83,
+            "career": 78,
+            "job": 79,
+            "money": 77,
+            "study": 66,
+            "health": 70
           },
           "bestYear": 2034,
-          "bestScore": 77,
+          "bestScore": 86,
           "years": [
             {
               "year": 2031,
               "label": "신해",
               "scores": {
-                "love": 60,
-                "career": 58,
-                "money": 56,
-                "health": 64,
-                "overall": 60
+                "love": 67,
+                "career": 61,
+                "job": 62,
+                "money": 72,
+                "study": 57,
+                "health": 58,
+                "overall": 63
               }
             },
             {
               "year": 2032,
               "label": "임자",
               "scores": {
-                "love": 71,
-                "career": 71,
-                "money": 68,
-                "health": 80,
-                "overall": 73
+                "love": 91,
+                "career": 80,
+                "job": 75,
+                "money": 97,
+                "study": 64,
+                "health": 68,
+                "overall": 79
               }
             },
             {
               "year": 2033,
               "label": "계축",
               "scores": {
-                "love": 60,
-                "career": 59,
-                "money": 58,
-                "health": 64,
-                "overall": 60
+                "love": 70,
+                "career": 64,
+                "job": 62,
+                "money": 77,
+                "study": 55,
+                "health": 56,
+                "overall": 64
               }
             },
             {
               "year": 2034,
               "label": "갑인",
               "scores": {
-                "love": 79,
-                "career": 79,
-                "money": 67,
-                "health": 82,
-                "overall": 77
+                "love": 93,
+                "career": 93,
+                "job": 97,
+                "money": 70,
+                "study": 76,
+                "health": 85,
+                "overall": 86
               }
             },
             {
               "year": 2035,
               "label": "을묘",
               "scores": {
-                "love": 79,
-                "career": 79,
-                "money": 67,
-                "health": 82,
-                "overall": 77
+                "love": 93,
+                "career": 93,
+                "job": 97,
+                "money": 70,
+                "study": 76,
+                "health": 85,
+                "overall": 86
               }
             }
           ]
@@ -2829,11 +3185,13 @@ window.SAJU_DATA = {
           "daeun": "기축",
           "daeunHanja": "己丑",
           "scores": {
-            "love": 48,
+            "overall": 46,
+            "love": 46,
             "career": 46,
-            "money": 46,
-            "health": 47,
-            "overall": 47
+            "job": 47,
+            "money": 47,
+            "study": 47,
+            "health": 45
           },
           "bestYear": 2037,
           "bestScore": 50,
@@ -2842,11 +3200,13 @@ window.SAJU_DATA = {
               "year": 2036,
               "label": "병진",
               "scores": {
-                "love": 48,
-                "career": 47,
-                "money": 47,
-                "health": 48,
-                "overall": 48
+                "love": 47,
+                "career": 48,
+                "job": 48,
+                "money": 48,
+                "study": 47,
+                "health": 46,
+                "overall": 47
               }
             },
             {
@@ -2855,7 +3215,9 @@ window.SAJU_DATA = {
               "scores": {
                 "love": 50,
                 "career": 50,
+                "job": 50,
                 "money": 50,
+                "study": 50,
                 "health": 50,
                 "overall": 50
               }
@@ -2864,10 +3226,12 @@ window.SAJU_DATA = {
               "year": 2038,
               "label": "무오",
               "scores": {
-                "love": 48,
-                "career": 46,
-                "money": 47,
-                "health": 47,
+                "love": 47,
+                "career": 47,
+                "job": 47,
+                "money": 48,
+                "study": 47,
+                "health": 45,
                 "overall": 47
               }
             },
@@ -2875,22 +3239,26 @@ window.SAJU_DATA = {
               "year": 2039,
               "label": "기미",
               "scores": {
-                "love": 47,
-                "career": 44,
-                "money": 44,
-                "health": 45,
-                "overall": 45
+                "love": 44,
+                "career": 45,
+                "job": 45,
+                "money": 47,
+                "study": 44,
+                "health": 41,
+                "overall": 44
               }
             },
             {
               "year": 2040,
               "label": "경신",
               "scores": {
-                "love": 46,
-                "career": 43,
-                "money": 41,
-                "health": 45,
-                "overall": 44
+                "love": 42,
+                "career": 40,
+                "job": 46,
+                "money": 43,
+                "study": 45,
+                "health": 44,
+                "overall": 43
               }
             }
           ]
@@ -2902,68 +3270,80 @@ window.SAJU_DATA = {
           "daeun": "기축",
           "daeunHanja": "己丑",
           "scores": {
-            "love": 66,
-            "career": 65,
-            "money": 61,
-            "health": 69,
-            "overall": 65
+            "overall": 70,
+            "love": 76,
+            "career": 71,
+            "job": 74,
+            "money": 74,
+            "study": 62,
+            "health": 64
           },
           "bestYear": 2044,
-          "bestScore": 78,
+          "bestScore": 87,
           "years": [
             {
               "year": 2041,
               "label": "신유",
               "scores": {
-                "love": 46,
-                "career": 43,
-                "money": 41,
-                "health": 45,
-                "overall": 44
+                "love": 42,
+                "career": 40,
+                "job": 46,
+                "money": 43,
+                "study": 45,
+                "health": 44,
+                "overall": 43
               }
             },
             {
               "year": 2042,
               "label": "임술",
               "scores": {
-                "love": 63,
-                "career": 62,
-                "money": 61,
-                "health": 67,
-                "overall": 63
+                "love": 73,
+                "career": 67,
+                "job": 65,
+                "money": 80,
+                "study": 58,
+                "health": 59,
+                "overall": 67
               }
             },
             {
               "year": 2043,
               "label": "계해",
               "scores": {
-                "love": 74,
-                "career": 74,
-                "money": 71,
-                "health": 83,
-                "overall": 76
+                "love": 94,
+                "career": 83,
+                "job": 78,
+                "money": 97,
+                "study": 67,
+                "health": 71,
+                "overall": 82
               }
             },
             {
               "year": 2044,
               "label": "갑자",
               "scores": {
-                "love": 78,
-                "career": 78,
-                "money": 71,
-                "health": 84,
-                "overall": 78
+                "love": 95,
+                "career": 90,
+                "job": 97,
+                "money": 87,
+                "study": 74,
+                "health": 80,
+                "overall": 87
               }
             },
             {
               "year": 2045,
               "label": "을축",
               "scores": {
-                "love": 67,
-                "career": 66,
-                "money": 60,
+                "love": 74,
+                "career": 75,
+                "job": 86,
+                "money": 63,
+                "study": 65,
                 "health": 68,
-                "overall": 65
+                "overall": 72
               }
             }
           ]
@@ -2975,56 +3355,66 @@ window.SAJU_DATA = {
           "daeun": "경인",
           "daeunHanja": "庚寅",
           "scores": {
-            "love": 57,
-            "career": 55,
-            "money": 53,
-            "health": 56,
-            "overall": 56
+            "overall": 57,
+            "love": 58,
+            "career": 58,
+            "job": 62,
+            "money": 55,
+            "study": 55,
+            "health": 56
           },
           "bestYear": 2046,
-          "bestScore": 65,
+          "bestScore": 70,
           "years": [
             {
               "year": 2046,
               "label": "병인",
               "scores": {
-                "love": 66,
-                "career": 66,
-                "money": 61,
-                "health": 67,
-                "overall": 65
+                "love": 72,
+                "career": 72,
+                "job": 81,
+                "money": 62,
+                "study": 65,
+                "health": 68,
+                "overall": 70
               }
             },
             {
               "year": 2047,
               "label": "정묘",
               "scores": {
-                "love": 66,
-                "career": 66,
-                "money": 61,
-                "health": 67,
-                "overall": 65
+                "love": 72,
+                "career": 72,
+                "job": 81,
+                "money": 62,
+                "study": 65,
+                "health": 68,
+                "overall": 70
               }
             },
             {
               "year": 2048,
               "label": "무진",
               "scores": {
-                "love": 50,
-                "career": 47,
-                "money": 47,
-                "health": 48,
-                "overall": 48
+                "love": 47,
+                "career": 48,
+                "job": 48,
+                "money": 50,
+                "study": 47,
+                "health": 44,
+                "overall": 47
               }
             },
             {
               "year": 2049,
               "label": "기사",
               "scores": {
-                "love": 51,
-                "career": 49,
-                "money": 50,
-                "health": 50,
+                "love": 50,
+                "career": 50,
+                "job": 50,
+                "money": 51,
+                "study": 50,
+                "health": 48,
                 "overall": 50
               }
             },
@@ -3032,11 +3422,13 @@ window.SAJU_DATA = {
               "year": 2050,
               "label": "경오",
               "scores": {
-                "love": 51,
-                "career": 49,
-                "money": 48,
+                "love": 49,
+                "career": 47,
+                "job": 51,
+                "money": 49,
+                "study": 50,
                 "health": 50,
-                "overall": 50
+                "overall": 49
               }
             }
           ]
@@ -3057,7 +3449,9 @@ window.SAJU_DATA = {
           "scores": {
             "love": 53,
             "career": 53,
+            "job": 53,
             "money": 53,
+            "study": 53,
             "health": 53,
             "overall": 53
           }
@@ -3074,11 +3468,13 @@ window.SAJU_DATA = {
           "hanja": "丁未",
           "daeun": "무자",
           "scores": {
-            "love": 51,
-            "career": 50,
-            "money": 50,
-            "health": 51,
-            "overall": 51
+            "love": 50,
+            "career": 51,
+            "job": 51,
+            "money": 51,
+            "study": 50,
+            "health": 49,
+            "overall": 50
           }
         },
         {
@@ -3093,10 +3489,12 @@ window.SAJU_DATA = {
           "hanja": "戊申",
           "daeun": "무자",
           "scores": {
-            "love": 49,
+            "love": 46,
             "career": 46,
-            "money": 46,
-            "health": 48,
+            "job": 49,
+            "money": 48,
+            "study": 48,
+            "health": 46,
             "overall": 47
           }
         },
@@ -3112,10 +3510,12 @@ window.SAJU_DATA = {
           "hanja": "己酉",
           "daeun": "무자",
           "scores": {
-            "love": 49,
+            "love": 46,
             "career": 46,
-            "money": 46,
-            "health": 48,
+            "job": 49,
+            "money": 48,
+            "study": 48,
+            "health": 46,
             "overall": 47
           }
         },
@@ -3131,10 +3531,12 @@ window.SAJU_DATA = {
           "hanja": "庚戌",
           "daeun": "무자",
           "scores": {
-            "love": 49,
-            "career": 46,
-            "money": 46,
-            "health": 48,
+            "love": 46,
+            "career": 45,
+            "job": 49,
+            "money": 48,
+            "study": 48,
+            "health": 46,
             "overall": 47
           }
         },
@@ -3150,11 +3552,13 @@ window.SAJU_DATA = {
           "hanja": "辛亥",
           "daeun": "무자",
           "scores": {
-            "love": 60,
-            "career": 58,
-            "money": 56,
-            "health": 64,
-            "overall": 60
+            "love": 67,
+            "career": 61,
+            "job": 62,
+            "money": 72,
+            "study": 57,
+            "health": 58,
+            "overall": 63
           }
         },
         {
@@ -3169,11 +3573,13 @@ window.SAJU_DATA = {
           "hanja": "壬子",
           "daeun": "기축",
           "scores": {
-            "love": 71,
-            "career": 71,
-            "money": 68,
-            "health": 80,
-            "overall": 73
+            "love": 91,
+            "career": 80,
+            "job": 75,
+            "money": 97,
+            "study": 64,
+            "health": 68,
+            "overall": 79
           }
         },
         {
@@ -3188,11 +3594,13 @@ window.SAJU_DATA = {
           "hanja": "癸丑",
           "daeun": "기축",
           "scores": {
-            "love": 60,
-            "career": 59,
-            "money": 58,
-            "health": 64,
-            "overall": 60
+            "love": 70,
+            "career": 64,
+            "job": 62,
+            "money": 77,
+            "study": 55,
+            "health": 56,
+            "overall": 64
           }
         },
         {
@@ -3207,11 +3615,13 @@ window.SAJU_DATA = {
           "hanja": "甲寅",
           "daeun": "기축",
           "scores": {
-            "love": 79,
-            "career": 79,
-            "money": 67,
-            "health": 82,
-            "overall": 77
+            "love": 93,
+            "career": 93,
+            "job": 97,
+            "money": 70,
+            "study": 76,
+            "health": 85,
+            "overall": 86
           }
         },
         {
@@ -3226,11 +3636,13 @@ window.SAJU_DATA = {
           "hanja": "乙卯",
           "daeun": "기축",
           "scores": {
-            "love": 79,
-            "career": 79,
-            "money": 67,
-            "health": 82,
-            "overall": 77
+            "love": 93,
+            "career": 93,
+            "job": 97,
+            "money": 70,
+            "study": 76,
+            "health": 85,
+            "overall": 86
           }
         },
         {
@@ -3245,11 +3657,13 @@ window.SAJU_DATA = {
           "hanja": "丙辰",
           "daeun": "기축",
           "scores": {
-            "love": 48,
-            "career": 47,
-            "money": 47,
-            "health": 48,
-            "overall": 48
+            "love": 47,
+            "career": 48,
+            "job": 48,
+            "money": 48,
+            "study": 47,
+            "health": 46,
+            "overall": 47
           }
         },
         {
@@ -3266,7 +3680,9 @@ window.SAJU_DATA = {
           "scores": {
             "love": 50,
             "career": 50,
+            "job": 50,
             "money": 50,
+            "study": 50,
             "health": 50,
             "overall": 50
           }
@@ -3283,10 +3699,12 @@ window.SAJU_DATA = {
           "hanja": "戊午",
           "daeun": "기축",
           "scores": {
-            "love": 48,
-            "career": 46,
-            "money": 47,
-            "health": 47,
+            "love": 47,
+            "career": 47,
+            "job": 47,
+            "money": 48,
+            "study": 47,
+            "health": 45,
             "overall": 47
           }
         },
@@ -3302,11 +3720,13 @@ window.SAJU_DATA = {
           "hanja": "己未",
           "daeun": "기축",
           "scores": {
-            "love": 47,
-            "career": 44,
-            "money": 44,
-            "health": 45,
-            "overall": 45
+            "love": 44,
+            "career": 45,
+            "job": 45,
+            "money": 47,
+            "study": 44,
+            "health": 41,
+            "overall": 44
           }
         },
         {
@@ -3321,11 +3741,13 @@ window.SAJU_DATA = {
           "hanja": "庚申",
           "daeun": "기축",
           "scores": {
-            "love": 46,
-            "career": 43,
-            "money": 41,
-            "health": 45,
-            "overall": 44
+            "love": 42,
+            "career": 40,
+            "job": 46,
+            "money": 43,
+            "study": 45,
+            "health": 44,
+            "overall": 43
           }
         },
         {
@@ -3340,11 +3762,13 @@ window.SAJU_DATA = {
           "hanja": "辛酉",
           "daeun": "기축",
           "scores": {
-            "love": 46,
-            "career": 43,
-            "money": 41,
-            "health": 45,
-            "overall": 44
+            "love": 42,
+            "career": 40,
+            "job": 46,
+            "money": 43,
+            "study": 45,
+            "health": 44,
+            "overall": 43
           }
         },
         {
@@ -3359,11 +3783,13 @@ window.SAJU_DATA = {
           "hanja": "壬戌",
           "daeun": "경인",
           "scores": {
-            "love": 63,
-            "career": 62,
-            "money": 61,
-            "health": 67,
-            "overall": 63
+            "love": 73,
+            "career": 67,
+            "job": 65,
+            "money": 80,
+            "study": 58,
+            "health": 59,
+            "overall": 67
           }
         },
         {
@@ -3378,11 +3804,13 @@ window.SAJU_DATA = {
           "hanja": "癸亥",
           "daeun": "경인",
           "scores": {
-            "love": 74,
-            "career": 74,
-            "money": 71,
-            "health": 83,
-            "overall": 76
+            "love": 94,
+            "career": 83,
+            "job": 78,
+            "money": 97,
+            "study": 67,
+            "health": 71,
+            "overall": 82
           }
         },
         {
@@ -3397,11 +3825,13 @@ window.SAJU_DATA = {
           "hanja": "甲子",
           "daeun": "경인",
           "scores": {
-            "love": 78,
-            "career": 78,
-            "money": 71,
-            "health": 84,
-            "overall": 78
+            "love": 95,
+            "career": 90,
+            "job": 97,
+            "money": 87,
+            "study": 74,
+            "health": 80,
+            "overall": 87
           }
         },
         {
@@ -3416,11 +3846,13 @@ window.SAJU_DATA = {
           "hanja": "乙丑",
           "daeun": "경인",
           "scores": {
-            "love": 67,
-            "career": 66,
-            "money": 60,
+            "love": 74,
+            "career": 75,
+            "job": 86,
+            "money": 63,
+            "study": 65,
             "health": 68,
-            "overall": 65
+            "overall": 72
           }
         },
         {
@@ -3435,11 +3867,13 @@ window.SAJU_DATA = {
           "hanja": "丙寅",
           "daeun": "경인",
           "scores": {
-            "love": 66,
-            "career": 66,
-            "money": 61,
-            "health": 67,
-            "overall": 65
+            "love": 72,
+            "career": 72,
+            "job": 81,
+            "money": 62,
+            "study": 65,
+            "health": 68,
+            "overall": 70
           }
         },
         {
@@ -3454,11 +3888,13 @@ window.SAJU_DATA = {
           "hanja": "丁卯",
           "daeun": "경인",
           "scores": {
-            "love": 66,
-            "career": 66,
-            "money": 61,
-            "health": 67,
-            "overall": 65
+            "love": 72,
+            "career": 72,
+            "job": 81,
+            "money": 62,
+            "study": 65,
+            "health": 68,
+            "overall": 70
           }
         },
         {
@@ -3473,11 +3909,13 @@ window.SAJU_DATA = {
           "hanja": "戊辰",
           "daeun": "경인",
           "scores": {
-            "love": 50,
-            "career": 47,
-            "money": 47,
-            "health": 48,
-            "overall": 48
+            "love": 47,
+            "career": 48,
+            "job": 48,
+            "money": 50,
+            "study": 47,
+            "health": 44,
+            "overall": 47
           }
         },
         {
@@ -3492,10 +3930,12 @@ window.SAJU_DATA = {
           "hanja": "己巳",
           "daeun": "경인",
           "scores": {
-            "love": 51,
-            "career": 49,
-            "money": 50,
-            "health": 50,
+            "love": 50,
+            "career": 50,
+            "job": 50,
+            "money": 51,
+            "study": 50,
+            "health": 48,
             "overall": 50
           }
         },
@@ -3511,18 +3951,20 @@ window.SAJU_DATA = {
           "hanja": "庚午",
           "daeun": "경인",
           "scores": {
-            "love": 51,
-            "career": 49,
-            "money": 48,
+            "love": 49,
+            "career": 47,
+            "job": 51,
+            "money": 49,
+            "study": 50,
             "health": 50,
-            "overall": 50
+            "overall": 49
           }
         }
       ],
       "peakYear": {
         "year": 2044,
         "label": "갑자",
-        "score": 78
+        "score": 87
       },
       "topics": {
         "love": {
@@ -3573,6 +4015,30 @@ window.SAJU_DATA = {
           "key": "career",
           "score": 53
         },
+        "job": {
+          "title": "취업운",
+          "hanja": "職",
+          "accent": "#a78bfa",
+          "headline": "스펙보다 \"손에 잡히는 결과물\"이 여는 문",
+          "summary": "관성(목)이 용신이자 하나뿐이라 조직 생활의 틀이 이 사람을 단단하게 만듭니다. 식상(금)이 두 개로 실무·기술 습득이 빠르고, 편관이 있어 책임을 맡으면 오히려 성장합니다. 20대 취업은 자격·포트폴리오 같은 증거물이 결정적입니다.",
+          "strengths": [
+            "기술을 빨리 익히는 손",
+            "맡은 일을 끝까지 해내는 책임감",
+            "현장에서 통하는 실무 감각"
+          ],
+          "cautions": [
+            "완벽을 기다리다 지원 시기를 놓칩니다",
+            "눈앞의 일에 몰입해 방향 점검이 늦습니다",
+            "첫 직장의 조건만 보고 판단합니다"
+          ],
+          "advice": [
+            "\"완성\" 전에 지원하고 피드백을 받으세요",
+            "포트폴리오를 3개 프로젝트로 압축하세요",
+            "선배 3명에게 실제 업무를 물어보세요"
+          ],
+          "key": "job",
+          "score": 53
+        },
         "money": {
           "title": "금전운",
           "hanja": "財",
@@ -3594,6 +4060,29 @@ window.SAJU_DATA = {
             "물·파란색 소품, 수영·물 마시기로 수 기운을 보완하세요"
           ],
           "key": "money",
+          "score": 53
+        },
+        "study": {
+          "title": "학업운",
+          "hanja": "學",
+          "accent": "#22d3ee",
+          "headline": "이해는 빠른데 꾸준함이 관건",
+          "summary": "인성(화)이 두 개로 이해력과 흡수력이 좋습니다. 다만 토가 세 개로 과해 한 번 지치면 회복이 느리고, 수가 없어 밤샘 뒤 컨디션 회복이 더딥니다. 실력은 \"짧게 자주\"에서 나옵니다.",
+          "strengths": [
+            "개념을 빠르게 흡수하는 이해력",
+            "배운 것을 응용하는 감각"
+          ],
+          "cautions": [
+            "벼락치기 후 긴 공백이 생깁니다",
+            "밤샘이 다음 주 전체를 망칩니다",
+            "목표가 흐려지면 금방 흥미를 잃습니다"
+          ],
+          "advice": [
+            "하루 2시간 고정 루틴을 먼저 만드세요",
+            "시험 2주 전 계획표를 눈에 붙이세요",
+            "물 1.5L와 수면 7시간을 성적의 일부로 보세요"
+          ],
+          "key": "study",
           "score": 53
         },
         "health": {
