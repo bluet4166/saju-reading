@@ -1,7 +1,7 @@
 /* 자동 생성 파일 — tools/generate-data.mjs 로 재생성하세요 */
 window.SAJU_DATA = {
   "meta": {
-    "generatedAt": "2026-11-01T02:30:14.748Z",
+    "generatedAt": "2026-11-01T05:32:43.160Z",
     "engine": "saju-fortune (npm) — 로컬 계산, MCP 미사용",
     "disclaimer": "이 페이지는 전통 해석에 기반한 참고 자료입니다. 의료·투자·법률 판단을 대신하지 않으며, 점수는 길흉의 확정이 아니라 상대적 흐름을 보여 주는 지표입니다.",
     "formula": "연도점수 = 50 + (천간값×w + 지지값×0.8×w)×1.6 + 대운보정",
@@ -2426,6 +2426,1199 @@ window.SAJU_DATA = {
           ],
           "key": "health",
           "score": 78
+        }
+      }
+    },
+    {
+      "id": "p2005",
+      "label": "2005 · 기축",
+      "relation": "가족",
+      "subject": {
+        "name": "가족",
+        "lunar": "2005-11-01 (양력)",
+        "solar": "2005-11-01",
+        "time": "11:15",
+        "timeLabel": "오시(午時, 11:00~13:00)",
+        "gender": "male",
+        "genderKo": "남성",
+        "birthCity": null,
+        "conversion": "11월 1일은 입동(11/7) 이전이라 술월(戌月)입니다",
+        "timeNote": "11:15는 오시(11:00~13:00) 초반이라 시주 경계에서 충분히 떨어져 있습니다."
+      },
+      "pillars": [
+        {
+          "pos": "연주",
+          "label": "을유",
+          "hanja": "乙酉",
+          "stem": "을",
+          "stemHanja": "乙",
+          "stemEl": "wood",
+          "stemKo": "목",
+          "branch": "유",
+          "branchHanja": "酉",
+          "branchEl": "metal",
+          "branchKo": "금",
+          "animal": "닭",
+          "yinYang": "yin"
+        },
+        {
+          "pos": "월주",
+          "label": "병술",
+          "hanja": "丙戌",
+          "stem": "병",
+          "stemHanja": "丙",
+          "stemEl": "fire",
+          "stemKo": "화",
+          "branch": "술",
+          "branchHanja": "戌",
+          "branchEl": "earth",
+          "branchKo": "토",
+          "animal": "개",
+          "yinYang": "yang"
+        },
+        {
+          "pos": "일주",
+          "label": "기축",
+          "hanja": "己丑",
+          "stem": "기",
+          "stemHanja": "己",
+          "stemEl": "earth",
+          "stemKo": "토",
+          "branch": "축",
+          "branchHanja": "丑",
+          "branchEl": "earth",
+          "branchKo": "토",
+          "animal": "소",
+          "yinYang": "yin"
+        },
+        {
+          "pos": "시주",
+          "label": "경오",
+          "hanja": "庚午",
+          "stem": "경",
+          "stemHanja": "庚",
+          "stemEl": "metal",
+          "stemKo": "금",
+          "branch": "오",
+          "branchHanja": "午",
+          "branchEl": "fire",
+          "branchKo": "화",
+          "animal": "말",
+          "yinYang": "yang"
+        }
+      ],
+      "dayMaster": {
+        "stem": "기",
+        "element": "earth",
+        "elementKo": "토",
+        "yinYang": "yin",
+        "strength": "strong"
+      },
+      "fiveElements": {
+        "wood": 1,
+        "fire": 2,
+        "earth": 3,
+        "metal": 2,
+        "water": 0
+      },
+      "dominantElements": [
+        "earth"
+      ],
+      "weakElements": [
+        "water"
+      ],
+      "yongsin": {
+        "primary": "wood",
+        "primaryKo": "목(木)",
+        "secondary": "water",
+        "secondaryKo": "수(水)",
+        "reasoning": "토 일간의 강약과 오행 분포를 함께 보아 목(木) 기운을 우선 조율점으로 둡니다."
+      },
+      "scoreModel": {
+        "elementBase": {
+          "wood": {
+            "value": 10,
+            "reason": "용신(1순위)",
+            "count": 1
+          },
+          "fire": {
+            "value": 0,
+            "reason": "중립",
+            "count": 2
+          },
+          "earth": {
+            "value": -2,
+            "reason": "비겁 과다 — 에너지 분산",
+            "count": 3
+          },
+          "metal": {
+            "value": -2,
+            "reason": "식상 과다 — 설기 소모",
+            "count": 2
+          },
+          "water": {
+            "value": 8,
+            "reason": "희신(2순위) · 부족 보완",
+            "count": 0
+          }
+        }
+      },
+      "daeun": [
+        {
+          "age": 7,
+          "from": 2012,
+          "to": 2021,
+          "label": "정해",
+          "hanja": "丁亥",
+          "stemEl": "fire",
+          "branchEl": "water",
+          "delta": 3
+        },
+        {
+          "age": 17,
+          "from": 2022,
+          "to": 2031,
+          "label": "무자",
+          "hanja": "戊子",
+          "stemEl": "earth",
+          "branchEl": "water",
+          "delta": 3
+        },
+        {
+          "age": 27,
+          "from": 2032,
+          "to": 2041,
+          "label": "기축",
+          "hanja": "己丑",
+          "stemEl": "earth",
+          "branchEl": "earth",
+          "delta": 0
+        },
+        {
+          "age": 37,
+          "from": 2042,
+          "to": 2051,
+          "label": "경인",
+          "hanja": "庚寅",
+          "stemEl": "metal",
+          "branchEl": "wood",
+          "delta": 3
+        },
+        {
+          "age": 47,
+          "from": 2052,
+          "to": 2061,
+          "label": "신묘",
+          "hanja": "辛卯",
+          "stemEl": "metal",
+          "branchEl": "wood",
+          "delta": 3
+        },
+        {
+          "age": 57,
+          "from": 2062,
+          "to": 2071,
+          "label": "임진",
+          "hanja": "壬辰",
+          "stemEl": "water",
+          "branchEl": "earth",
+          "delta": 3
+        },
+        {
+          "age": 67,
+          "from": 2072,
+          "to": 2081,
+          "label": "계사",
+          "hanja": "癸巳",
+          "stemEl": "water",
+          "branchEl": "fire",
+          "delta": 3
+        },
+        {
+          "age": 77,
+          "from": 2082,
+          "to": 2091,
+          "label": "갑오",
+          "hanja": "甲午",
+          "stemEl": "wood",
+          "branchEl": "fire",
+          "delta": 3
+        },
+        {
+          "age": 87,
+          "from": 2092,
+          "to": 2101,
+          "label": "을미",
+          "hanja": "乙未",
+          "stemEl": "wood",
+          "branchEl": "earth",
+          "delta": 3
+        },
+        {
+          "age": 97,
+          "from": 2102,
+          "to": 2111,
+          "label": "병신",
+          "hanja": "丙申",
+          "stemEl": "fire",
+          "branchEl": "metal",
+          "delta": 0
+        }
+      ],
+      "currentDaeun": {
+        "age": 17,
+        "from": 2022,
+        "to": 2031,
+        "label": "무자",
+        "hanja": "戊子",
+        "stemEl": "earth",
+        "branchEl": "water",
+        "delta": 3
+      },
+      "buckets": [
+        {
+          "label": "2026–2030",
+          "from": 2026,
+          "to": 2030,
+          "daeun": "무자",
+          "daeunHanja": "戊子",
+          "scores": {
+            "love": 50,
+            "career": 48,
+            "money": 48,
+            "health": 50,
+            "overall": 49
+          },
+          "bestYear": 2026,
+          "bestScore": 53,
+          "years": [
+            {
+              "year": 2026,
+              "label": "병오",
+              "scores": {
+                "love": 53,
+                "career": 53,
+                "money": 53,
+                "health": 53,
+                "overall": 53
+              }
+            },
+            {
+              "year": 2027,
+              "label": "정미",
+              "scores": {
+                "love": 51,
+                "career": 50,
+                "money": 50,
+                "health": 51,
+                "overall": 51
+              }
+            },
+            {
+              "year": 2028,
+              "label": "무신",
+              "scores": {
+                "love": 49,
+                "career": 46,
+                "money": 46,
+                "health": 48,
+                "overall": 47
+              }
+            },
+            {
+              "year": 2029,
+              "label": "기유",
+              "scores": {
+                "love": 49,
+                "career": 46,
+                "money": 46,
+                "health": 48,
+                "overall": 47
+              }
+            },
+            {
+              "year": 2030,
+              "label": "경술",
+              "scores": {
+                "love": 49,
+                "career": 46,
+                "money": 46,
+                "health": 48,
+                "overall": 47
+              }
+            }
+          ]
+        },
+        {
+          "label": "2031–2035",
+          "from": 2031,
+          "to": 2035,
+          "daeun": "무자",
+          "daeunHanja": "戊子",
+          "scores": {
+            "love": 70,
+            "career": 69,
+            "money": 63,
+            "health": 74,
+            "overall": 69
+          },
+          "bestYear": 2034,
+          "bestScore": 77,
+          "years": [
+            {
+              "year": 2031,
+              "label": "신해",
+              "scores": {
+                "love": 60,
+                "career": 58,
+                "money": 56,
+                "health": 64,
+                "overall": 60
+              }
+            },
+            {
+              "year": 2032,
+              "label": "임자",
+              "scores": {
+                "love": 71,
+                "career": 71,
+                "money": 68,
+                "health": 80,
+                "overall": 73
+              }
+            },
+            {
+              "year": 2033,
+              "label": "계축",
+              "scores": {
+                "love": 60,
+                "career": 59,
+                "money": 58,
+                "health": 64,
+                "overall": 60
+              }
+            },
+            {
+              "year": 2034,
+              "label": "갑인",
+              "scores": {
+                "love": 79,
+                "career": 79,
+                "money": 67,
+                "health": 82,
+                "overall": 77
+              }
+            },
+            {
+              "year": 2035,
+              "label": "을묘",
+              "scores": {
+                "love": 79,
+                "career": 79,
+                "money": 67,
+                "health": 82,
+                "overall": 77
+              }
+            }
+          ]
+        },
+        {
+          "label": "2036–2040",
+          "from": 2036,
+          "to": 2040,
+          "daeun": "기축",
+          "daeunHanja": "己丑",
+          "scores": {
+            "love": 48,
+            "career": 46,
+            "money": 46,
+            "health": 47,
+            "overall": 47
+          },
+          "bestYear": 2037,
+          "bestScore": 50,
+          "years": [
+            {
+              "year": 2036,
+              "label": "병진",
+              "scores": {
+                "love": 48,
+                "career": 47,
+                "money": 47,
+                "health": 48,
+                "overall": 48
+              }
+            },
+            {
+              "year": 2037,
+              "label": "정사",
+              "scores": {
+                "love": 50,
+                "career": 50,
+                "money": 50,
+                "health": 50,
+                "overall": 50
+              }
+            },
+            {
+              "year": 2038,
+              "label": "무오",
+              "scores": {
+                "love": 48,
+                "career": 46,
+                "money": 47,
+                "health": 47,
+                "overall": 47
+              }
+            },
+            {
+              "year": 2039,
+              "label": "기미",
+              "scores": {
+                "love": 47,
+                "career": 44,
+                "money": 44,
+                "health": 45,
+                "overall": 45
+              }
+            },
+            {
+              "year": 2040,
+              "label": "경신",
+              "scores": {
+                "love": 46,
+                "career": 43,
+                "money": 41,
+                "health": 45,
+                "overall": 44
+              }
+            }
+          ]
+        },
+        {
+          "label": "2041–2045",
+          "from": 2041,
+          "to": 2045,
+          "daeun": "기축",
+          "daeunHanja": "己丑",
+          "scores": {
+            "love": 66,
+            "career": 65,
+            "money": 61,
+            "health": 69,
+            "overall": 65
+          },
+          "bestYear": 2044,
+          "bestScore": 78,
+          "years": [
+            {
+              "year": 2041,
+              "label": "신유",
+              "scores": {
+                "love": 46,
+                "career": 43,
+                "money": 41,
+                "health": 45,
+                "overall": 44
+              }
+            },
+            {
+              "year": 2042,
+              "label": "임술",
+              "scores": {
+                "love": 63,
+                "career": 62,
+                "money": 61,
+                "health": 67,
+                "overall": 63
+              }
+            },
+            {
+              "year": 2043,
+              "label": "계해",
+              "scores": {
+                "love": 74,
+                "career": 74,
+                "money": 71,
+                "health": 83,
+                "overall": 76
+              }
+            },
+            {
+              "year": 2044,
+              "label": "갑자",
+              "scores": {
+                "love": 78,
+                "career": 78,
+                "money": 71,
+                "health": 84,
+                "overall": 78
+              }
+            },
+            {
+              "year": 2045,
+              "label": "을축",
+              "scores": {
+                "love": 67,
+                "career": 66,
+                "money": 60,
+                "health": 68,
+                "overall": 65
+              }
+            }
+          ]
+        },
+        {
+          "label": "2046–2050",
+          "from": 2046,
+          "to": 2050,
+          "daeun": "경인",
+          "daeunHanja": "庚寅",
+          "scores": {
+            "love": 57,
+            "career": 55,
+            "money": 53,
+            "health": 56,
+            "overall": 56
+          },
+          "bestYear": 2046,
+          "bestScore": 65,
+          "years": [
+            {
+              "year": 2046,
+              "label": "병인",
+              "scores": {
+                "love": 66,
+                "career": 66,
+                "money": 61,
+                "health": 67,
+                "overall": 65
+              }
+            },
+            {
+              "year": 2047,
+              "label": "정묘",
+              "scores": {
+                "love": 66,
+                "career": 66,
+                "money": 61,
+                "health": 67,
+                "overall": 65
+              }
+            },
+            {
+              "year": 2048,
+              "label": "무진",
+              "scores": {
+                "love": 50,
+                "career": 47,
+                "money": 47,
+                "health": 48,
+                "overall": 48
+              }
+            },
+            {
+              "year": 2049,
+              "label": "기사",
+              "scores": {
+                "love": 51,
+                "career": 49,
+                "money": 50,
+                "health": 50,
+                "overall": 50
+              }
+            },
+            {
+              "year": 2050,
+              "label": "경오",
+              "scores": {
+                "love": 51,
+                "career": 49,
+                "money": 48,
+                "health": 50,
+                "overall": 50
+              }
+            }
+          ]
+        }
+      ],
+      "yearly": [
+        {
+          "year": 2026,
+          "stem": "병",
+          "stemHanja": "丙",
+          "stemEl": "fire",
+          "branch": "오",
+          "branchHanja": "午",
+          "branchEl": "fire",
+          "label": "병오",
+          "hanja": "丙午",
+          "daeun": "무자",
+          "scores": {
+            "love": 53,
+            "career": 53,
+            "money": 53,
+            "health": 53,
+            "overall": 53
+          }
+        },
+        {
+          "year": 2027,
+          "stem": "정",
+          "stemHanja": "丁",
+          "stemEl": "fire",
+          "branch": "미",
+          "branchHanja": "未",
+          "branchEl": "earth",
+          "label": "정미",
+          "hanja": "丁未",
+          "daeun": "무자",
+          "scores": {
+            "love": 51,
+            "career": 50,
+            "money": 50,
+            "health": 51,
+            "overall": 51
+          }
+        },
+        {
+          "year": 2028,
+          "stem": "무",
+          "stemHanja": "戊",
+          "stemEl": "earth",
+          "branch": "신",
+          "branchHanja": "申",
+          "branchEl": "metal",
+          "label": "무신",
+          "hanja": "戊申",
+          "daeun": "무자",
+          "scores": {
+            "love": 49,
+            "career": 46,
+            "money": 46,
+            "health": 48,
+            "overall": 47
+          }
+        },
+        {
+          "year": 2029,
+          "stem": "기",
+          "stemHanja": "己",
+          "stemEl": "earth",
+          "branch": "유",
+          "branchHanja": "酉",
+          "branchEl": "metal",
+          "label": "기유",
+          "hanja": "己酉",
+          "daeun": "무자",
+          "scores": {
+            "love": 49,
+            "career": 46,
+            "money": 46,
+            "health": 48,
+            "overall": 47
+          }
+        },
+        {
+          "year": 2030,
+          "stem": "경",
+          "stemHanja": "庚",
+          "stemEl": "metal",
+          "branch": "술",
+          "branchHanja": "戌",
+          "branchEl": "earth",
+          "label": "경술",
+          "hanja": "庚戌",
+          "daeun": "무자",
+          "scores": {
+            "love": 49,
+            "career": 46,
+            "money": 46,
+            "health": 48,
+            "overall": 47
+          }
+        },
+        {
+          "year": 2031,
+          "stem": "신",
+          "stemHanja": "辛",
+          "stemEl": "metal",
+          "branch": "해",
+          "branchHanja": "亥",
+          "branchEl": "water",
+          "label": "신해",
+          "hanja": "辛亥",
+          "daeun": "무자",
+          "scores": {
+            "love": 60,
+            "career": 58,
+            "money": 56,
+            "health": 64,
+            "overall": 60
+          }
+        },
+        {
+          "year": 2032,
+          "stem": "임",
+          "stemHanja": "壬",
+          "stemEl": "water",
+          "branch": "자",
+          "branchHanja": "子",
+          "branchEl": "water",
+          "label": "임자",
+          "hanja": "壬子",
+          "daeun": "기축",
+          "scores": {
+            "love": 71,
+            "career": 71,
+            "money": 68,
+            "health": 80,
+            "overall": 73
+          }
+        },
+        {
+          "year": 2033,
+          "stem": "계",
+          "stemHanja": "癸",
+          "stemEl": "water",
+          "branch": "축",
+          "branchHanja": "丑",
+          "branchEl": "earth",
+          "label": "계축",
+          "hanja": "癸丑",
+          "daeun": "기축",
+          "scores": {
+            "love": 60,
+            "career": 59,
+            "money": 58,
+            "health": 64,
+            "overall": 60
+          }
+        },
+        {
+          "year": 2034,
+          "stem": "갑",
+          "stemHanja": "甲",
+          "stemEl": "wood",
+          "branch": "인",
+          "branchHanja": "寅",
+          "branchEl": "wood",
+          "label": "갑인",
+          "hanja": "甲寅",
+          "daeun": "기축",
+          "scores": {
+            "love": 79,
+            "career": 79,
+            "money": 67,
+            "health": 82,
+            "overall": 77
+          }
+        },
+        {
+          "year": 2035,
+          "stem": "을",
+          "stemHanja": "乙",
+          "stemEl": "wood",
+          "branch": "묘",
+          "branchHanja": "卯",
+          "branchEl": "wood",
+          "label": "을묘",
+          "hanja": "乙卯",
+          "daeun": "기축",
+          "scores": {
+            "love": 79,
+            "career": 79,
+            "money": 67,
+            "health": 82,
+            "overall": 77
+          }
+        },
+        {
+          "year": 2036,
+          "stem": "병",
+          "stemHanja": "丙",
+          "stemEl": "fire",
+          "branch": "진",
+          "branchHanja": "辰",
+          "branchEl": "earth",
+          "label": "병진",
+          "hanja": "丙辰",
+          "daeun": "기축",
+          "scores": {
+            "love": 48,
+            "career": 47,
+            "money": 47,
+            "health": 48,
+            "overall": 48
+          }
+        },
+        {
+          "year": 2037,
+          "stem": "정",
+          "stemHanja": "丁",
+          "stemEl": "fire",
+          "branch": "사",
+          "branchHanja": "巳",
+          "branchEl": "fire",
+          "label": "정사",
+          "hanja": "丁巳",
+          "daeun": "기축",
+          "scores": {
+            "love": 50,
+            "career": 50,
+            "money": 50,
+            "health": 50,
+            "overall": 50
+          }
+        },
+        {
+          "year": 2038,
+          "stem": "무",
+          "stemHanja": "戊",
+          "stemEl": "earth",
+          "branch": "오",
+          "branchHanja": "午",
+          "branchEl": "fire",
+          "label": "무오",
+          "hanja": "戊午",
+          "daeun": "기축",
+          "scores": {
+            "love": 48,
+            "career": 46,
+            "money": 47,
+            "health": 47,
+            "overall": 47
+          }
+        },
+        {
+          "year": 2039,
+          "stem": "기",
+          "stemHanja": "己",
+          "stemEl": "earth",
+          "branch": "미",
+          "branchHanja": "未",
+          "branchEl": "earth",
+          "label": "기미",
+          "hanja": "己未",
+          "daeun": "기축",
+          "scores": {
+            "love": 47,
+            "career": 44,
+            "money": 44,
+            "health": 45,
+            "overall": 45
+          }
+        },
+        {
+          "year": 2040,
+          "stem": "경",
+          "stemHanja": "庚",
+          "stemEl": "metal",
+          "branch": "신",
+          "branchHanja": "申",
+          "branchEl": "metal",
+          "label": "경신",
+          "hanja": "庚申",
+          "daeun": "기축",
+          "scores": {
+            "love": 46,
+            "career": 43,
+            "money": 41,
+            "health": 45,
+            "overall": 44
+          }
+        },
+        {
+          "year": 2041,
+          "stem": "신",
+          "stemHanja": "辛",
+          "stemEl": "metal",
+          "branch": "유",
+          "branchHanja": "酉",
+          "branchEl": "metal",
+          "label": "신유",
+          "hanja": "辛酉",
+          "daeun": "기축",
+          "scores": {
+            "love": 46,
+            "career": 43,
+            "money": 41,
+            "health": 45,
+            "overall": 44
+          }
+        },
+        {
+          "year": 2042,
+          "stem": "임",
+          "stemHanja": "壬",
+          "stemEl": "water",
+          "branch": "술",
+          "branchHanja": "戌",
+          "branchEl": "earth",
+          "label": "임술",
+          "hanja": "壬戌",
+          "daeun": "경인",
+          "scores": {
+            "love": 63,
+            "career": 62,
+            "money": 61,
+            "health": 67,
+            "overall": 63
+          }
+        },
+        {
+          "year": 2043,
+          "stem": "계",
+          "stemHanja": "癸",
+          "stemEl": "water",
+          "branch": "해",
+          "branchHanja": "亥",
+          "branchEl": "water",
+          "label": "계해",
+          "hanja": "癸亥",
+          "daeun": "경인",
+          "scores": {
+            "love": 74,
+            "career": 74,
+            "money": 71,
+            "health": 83,
+            "overall": 76
+          }
+        },
+        {
+          "year": 2044,
+          "stem": "갑",
+          "stemHanja": "甲",
+          "stemEl": "wood",
+          "branch": "자",
+          "branchHanja": "子",
+          "branchEl": "water",
+          "label": "갑자",
+          "hanja": "甲子",
+          "daeun": "경인",
+          "scores": {
+            "love": 78,
+            "career": 78,
+            "money": 71,
+            "health": 84,
+            "overall": 78
+          }
+        },
+        {
+          "year": 2045,
+          "stem": "을",
+          "stemHanja": "乙",
+          "stemEl": "wood",
+          "branch": "축",
+          "branchHanja": "丑",
+          "branchEl": "earth",
+          "label": "을축",
+          "hanja": "乙丑",
+          "daeun": "경인",
+          "scores": {
+            "love": 67,
+            "career": 66,
+            "money": 60,
+            "health": 68,
+            "overall": 65
+          }
+        },
+        {
+          "year": 2046,
+          "stem": "병",
+          "stemHanja": "丙",
+          "stemEl": "fire",
+          "branch": "인",
+          "branchHanja": "寅",
+          "branchEl": "wood",
+          "label": "병인",
+          "hanja": "丙寅",
+          "daeun": "경인",
+          "scores": {
+            "love": 66,
+            "career": 66,
+            "money": 61,
+            "health": 67,
+            "overall": 65
+          }
+        },
+        {
+          "year": 2047,
+          "stem": "정",
+          "stemHanja": "丁",
+          "stemEl": "fire",
+          "branch": "묘",
+          "branchHanja": "卯",
+          "branchEl": "wood",
+          "label": "정묘",
+          "hanja": "丁卯",
+          "daeun": "경인",
+          "scores": {
+            "love": 66,
+            "career": 66,
+            "money": 61,
+            "health": 67,
+            "overall": 65
+          }
+        },
+        {
+          "year": 2048,
+          "stem": "무",
+          "stemHanja": "戊",
+          "stemEl": "earth",
+          "branch": "진",
+          "branchHanja": "辰",
+          "branchEl": "earth",
+          "label": "무진",
+          "hanja": "戊辰",
+          "daeun": "경인",
+          "scores": {
+            "love": 50,
+            "career": 47,
+            "money": 47,
+            "health": 48,
+            "overall": 48
+          }
+        },
+        {
+          "year": 2049,
+          "stem": "기",
+          "stemHanja": "己",
+          "stemEl": "earth",
+          "branch": "사",
+          "branchHanja": "巳",
+          "branchEl": "fire",
+          "label": "기사",
+          "hanja": "己巳",
+          "daeun": "경인",
+          "scores": {
+            "love": 51,
+            "career": 49,
+            "money": 50,
+            "health": 50,
+            "overall": 50
+          }
+        },
+        {
+          "year": 2050,
+          "stem": "경",
+          "stemHanja": "庚",
+          "stemEl": "metal",
+          "branch": "오",
+          "branchHanja": "午",
+          "branchEl": "fire",
+          "label": "경오",
+          "hanja": "庚午",
+          "daeun": "경인",
+          "scores": {
+            "love": 51,
+            "career": 49,
+            "money": 48,
+            "health": 50,
+            "overall": 50
+          }
+        }
+      ],
+      "peakYear": {
+        "year": 2044,
+        "label": "갑자",
+        "score": 78
+      },
+      "topics": {
+        "love": {
+          "title": "연애운",
+          "hanja": "緣",
+          "accent": "#f472b6",
+          "headline": "표현을 아끼는 만큼 상대가 확신을 못 갖습니다",
+          "summary": "기토(己土)는 논밭의 흙처럼 묵묵히 품는 일간입니다. 좋아해도 티를 잘 내지 않고, 인성(화)이 강해 머릿속으로만 관계를 정리하는 편입니다. 재성(수)이 하나도 없어 감정을 말로 꺼내는 연습이 특히 필요합니다.",
+          "strengths": [
+            "한 사람을 오래 품는 안정감",
+            "말보다 행동으로 챙기는 성실함",
+            "쉽게 흔들리지 않는 중심"
+          ],
+          "cautions": [
+            "호감을 표현하지 않아 친구로 남기 쉽습니다",
+            "속으로 결론을 내리고 상대에게 확인하지 않습니다",
+            "토가 과해 고집으로 보일 수 있습니다"
+          ],
+          "advice": [
+            "호감은 한 문장으로 먼저 말해 보세요",
+            "추측 대신 질문으로 확인하는 습관을 들이세요",
+            "물·파란색 계열이 수 기운을 보완합니다"
+          ],
+          "key": "love",
+          "score": 53
+        },
+        "career": {
+          "title": "사업운",
+          "hanja": "業",
+          "accent": "#fbbf24",
+          "headline": "기술과 자격이 곧 무기가 되는 구조",
+          "summary": "식상(경금·유금)이 두 개로 실무 감각과 기술 습득이 빠르고, 인성(병화)이 배운 것을 구조화합니다. 편관(을목)이 하나 있어 조직 안에서 책임을 맡는 힘도 있습니다. 20대에 쌓은 스펙만큼 30대 이후 속도가 붙는 사주입니다.",
+          "strengths": [
+            "손에 잡히는 기술을 빨리 익히는 힘",
+            "배운 것을 체계로 정리하는 능력",
+            "맡은 일을 끝까지 해내는 책임감"
+          ],
+          "cautions": [
+            "완벽을 기다리다 시작이 늦습니다",
+            "비교와 조급함이 방향을 흔듭니다",
+            "혼자 다 하려다 협업 기회를 놓칩니다"
+          ],
+          "advice": [
+            "자격증·포트폴리오처럼 남는 결과물을 만드세요",
+            "작은 프로젝트를 끝까지 완성한 경험이 가장 큰 자산입니다",
+            "선배·상사에게 피드백을 짧게 자주 요청하세요"
+          ],
+          "key": "career",
+          "score": 53
+        },
+        "money": {
+          "title": "금전운",
+          "hanja": "財",
+          "accent": "#4ade80",
+          "headline": "재성이 비어 있어 규칙을 먼저 배워야 하는 재물",
+          "summary": "수(水)가 하나도 없어 재성의 그릇이 비어 있는 구조입니다. 버는 능력보다 관리하는 습관이 늦게 자리 잡기 쉬워, 20대에 만든 소비 습관이 평생 재물의 크기를 좌우합니다.",
+          "strengths": [
+            "필요한 곳에만 쓰는 절제",
+            "한번 규칙을 만들면 지키는 힘"
+          ],
+          "cautions": [
+            "또래 소비 흐름에 휩쓸리기 쉽습니다",
+            "첫 수입이 생기면 지출이 먼저 늘어납니다",
+            "큰 지출을 즉흥적으로 결정합니다"
+          ],
+          "advice": [
+            "첫 월급부터 자동이체로 20% 먼저 떼어 두세요",
+            "고정비와 변동비를 분리해 기록하세요",
+            "물·파란색 소품, 수영·물 마시기로 수 기운을 보완하세요"
+          ],
+          "key": "money",
+          "score": 53
+        },
+        "health": {
+          "title": "건강운",
+          "hanja": "壽",
+          "accent": "#60a5fa",
+          "headline": "수분과 소화, 두 축을 함께 봐야 합니다",
+          "summary": "수(水)가 0이라 수분·신장·호르몬 축이 약하고, 토(土)가 세 개로 과해 소화기 부담과 체중 변화가 나타나기 쉽습니다. 20대의 생활 습관이 30대 이후 컨디션의 바닥을 만듭니다.",
+          "strengths": [
+            "체력의 기본 바탕이 단단한 편",
+            "규칙을 만들면 오래 유지하는 힘"
+          ],
+          "cautions": [
+            "물을 거의 마시지 않습니다",
+            "야식·탄수화물 위주 식사가 소화를 힘들게 합니다",
+            "수면 시간이 불규칙합니다"
+          ],
+          "advice": [
+            "하루 1.5L 이상 물 마시기",
+            "야식을 줄이고 식사 시간을 고정하세요",
+            "주 3회 유산소로 땀 흘리기",
+            "증상이 있으면 전문의 상담이 우선입니다"
+          ],
+          "key": "health",
+          "score": 53
         }
       }
     }

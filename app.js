@@ -76,7 +76,7 @@
     document.title = `사주 대시보드 · ${s.solar} ${p.pillars[2].label}일주`
 
     const chips = [
-      ['생년월일', `${s.lunar} → 양력 ${s.solar}`],
+      ['생년월일', s.lunar.includes('음력') ? `${s.lunar} → 양력 ${s.solar}` : `${s.solar} (양력)`],
       ['시각', `${s.time} · ${s.timeLabel}`],
       ['성별', s.genderKo],
       ['일주', `${p.pillars[2].label} (${p.pillars[2].hanja})`],
@@ -125,8 +125,11 @@
     $('#dayMasterNote').textContent =
       `일간은 ${dm.stem}(${dm.elementKo}) · ${dm.yinYang === 'yin' ? '음' : '양'}${dm.elementKo} · ${STRENGTH_KO[dm.strength] || dm.strength}`
 
-    $('#conversionNote').textContent =
-      `음력 ${p.subject.lunar} → 양력 ${p.subject.solar} 변환: ${p.subject.conversion}. ${p.subject.timeNote}`
+    const isLunar = p.subject.lunar.includes('음력')
+    const convPrefix = isLunar
+      ? `음력 ${p.subject.lunar.replace(/\s*\(음력\)/, '')} → 양력 ${p.subject.solar} 변환`
+      : `${p.subject.solar} 양력 출생`
+    $('#conversionNote').textContent = `${convPrefix}: ${p.subject.conversion}. ${p.subject.timeNote}`
   }
 
   /* --------------------------------------------------------- 오행 분포 */
